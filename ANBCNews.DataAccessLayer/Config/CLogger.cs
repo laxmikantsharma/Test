@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+using ANBCNews.Model;
+using ANBCNews.Utility;
+using Dapper;
+
+namespace ANBCNews.DataAccessLayer.Config
+{
+    public static class CLogger
+    {
+        public static void WriteLog(ProjectSource projectSource, ELogLevel logLevel, String log)
+        {
+            WriteLog(projectSource, logLevel, log, null);
+        }
+
+        public static void WriteLog(ProjectSource projectSource, ELogLevel logLevel, String log, Exception exception)
+        {
+            WriteLogToDB(projectSource.ToString(), logLevel.ToString(), log, exception);
+        }
+        public static void WriteLogToDB(string projectSource, string logLevel, String log, Exception exception)
+        {
+            try
+            {
+
+                SqlDataAccess SqlData = new SqlDataAccess();
+                DynamicParameters objParameter = new DynamicParameters();
+                DBLogger objDBLogger = new DBLogger();
+                objDBLogger.Message = log + (exception != null ? "\n\n exception:" + exception.ToString() : "");
+                objDBLogger.Type = logLevel;
+                objDBLogger.Source = projectSource;
+                objParameter.Add("@ID", objDBLogger.ExceptionID);
+                objParameter.Add("@Message", objDBLogger.Message);
+                objParameter.Add("@Type", objDBLogger.Type);
+                objParameter.Add("@Source", objDBLogger.Source);
+                 SqlData.dataContext.QuerySingle<DBResponse>("USP_INSERT_EXCEPTIONLOG", objParameter, commandType: CommandType.StoredProcedure);
+            }
+            catch
+            {
+            }
+
+        }
+    }
+}

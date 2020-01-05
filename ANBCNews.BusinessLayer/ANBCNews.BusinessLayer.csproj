@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ANBCNews.DataAccessLayer\ANBCNews.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\ANBCNews.Model\ANBCNews.Model.csproj" />
+    <ProjectReference Include="..\ANBCNews.Utility\ANBCNews.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
