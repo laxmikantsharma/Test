@@ -2,18 +2,18 @@
 <div class="site-content container">
 </div>
 
-<div class="newspaper-x-header-widget-area">
-  <div id="newspaper_x_header_module-2" class="widget newspaper_x_widgets">
-    <div class="newspaper-x-recent-posts container">
+<div class="anbcnews-header-widget-area">
+  <div id="anbc_news_header_module-2" class="widget anbc_news_widgets">
+    <div class="anbcnews-recent-posts container">
       <ul>
-        <li *ngFor="let item of lstSliderNews let i=index" class="blazy b-loaded" id="newspaper-x-recent-post-{{i}}" style="background-image: url(&quot;https://colorlib.com/newspaper-x/wp-content/uploads/sites/15/2017/05/00_header_slider_01-550x360.jpg&quot;);">
-          <div class="newspaper-x-post-info">
+        <li *ngFor="let item of lstSliderNews let i=index" class="blazy b-loaded" id="anbcnews-recent-post-{{i}}" style="background-image: url(&quot;https://colorlib.com/anbcnews/wp-content/uploads/sites/15/2017/05/00_header_slider_01-550x360.jpg&quot;);">
+          <div class="anbcnews-post-info">
             <h1 *ngIf="i==0">  <a href="#">  {{item.headlines}}  </a> </h1>
             <h4 *ngIf="i!=0"> <a href="#"> {{item.headlines}}  </a> </h4>
-            <span class="newspaper-x-category">
+            <span class="anbcnews-category">
               <a href="#"> {{item.newsType}}</a>
             </span>
-            <span class="newspaper-x-date">{{item.strPublishedDate}}</span>
+            <span class="anbcnews-date">{{item.strPublishedDate}}</span>
           </div>
         </li> 
       </ul>
