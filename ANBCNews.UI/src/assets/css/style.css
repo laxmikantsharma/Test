@@ -118,8 +118,7 @@ h6 {
   border-left: 5px solid #0f5fa3;
   position: relative;
   text-transform: uppercase;
-  margin-bottom: 25px;
-  margin-top: 65px; }
+   }
   .section-title.comment-reply-title, .comment-reply-title.page-title, .anbcnews-content .comment-reply-title.widget-title, .anbcnews-after-content-sidebar .comment-reply-title.widget-title, #comments > h3.comment-reply-title:first-of-type, .comment-reply-title#reply-title, .anbcnews-related-posts .anbcnews-related-posts-title > h3.comment-reply-title {
     margin-top: 20px; }
   .section-title > span, .page-title > span, .anbcnews-content .widget-title > span, .anbcnews-after-content-sidebar .widget-title > span, #comments > h3:first-of-type > span, #reply-title > span, .anbcnews-related-posts .anbcnews-related-posts-title > h3 > span {
@@ -1807,7 +1806,9 @@ a {
   margin-bottom: 30px; }
 
 .anbc_news_widgets .anbcnews-layout-b-row:last-of-type .border {
-  border: none !important; }
+  border-left: 3px solid #0f5fa3;
+  padding: 10px;
+}
 
 .anbc_news_widgets .anbcnews-layout-b-row .card-info {
   position: relative;
@@ -2744,8 +2745,7 @@ a {
   margin: 0; }
 
 .anbcnews-header-widget-area {
-  background: #0e0e11;
-  margin-top: -38px;
+  background: #0e0e11; 
   line-height: 0; }
 
 .newspapper-spacer {
@@ -3184,3 +3184,4 @@ object {
 
 .gallery-caption {
   display: block; }
+ 

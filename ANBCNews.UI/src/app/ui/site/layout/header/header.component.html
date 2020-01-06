@@ -12,7 +12,7 @@
           </span>
           <ul class="anbcnews-news-carousel owl-carousel owl-theme">
             <li class="item" *ngFor="let item of lstBreakingNews" >
-              <a href="#">{{item.headlines}}</a>
+              <a [routerLink]="['/story/',item.newsID]">{{item.headlines}}</a>
             </li>
           </ul>
         </section>
@@ -44,8 +44,8 @@
   <div class="site-branding container">
     <div class="row">
       <div class="col-md-4 header-logo">
-        <a href="https://colorlib.com/anbcnews/" class="custom-logo-link" rel="home">
-          <img width="185" height="55" src="https://colorlib.com/anbcnews/wp-content/uploads/sites/15/2017/05/anbcnewsx_logo_185x55_dark.png" class="custom-logo" alt="anbcnews X">
+        <a [routerLink]="'/'" class="custom-logo-link" rel="home">
+          <img width="185" height="55" src="https://colorlib.com/newspaper-x/wp-content/uploads/sites/15/2017/05/newspaperx_logo_185x55_dark.png" class="custom-logo" alt="anbcnews X">
         </a>
       </div>
       <div class="col-md-8 header-banner">

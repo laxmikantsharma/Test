@@ -16,4 +16,11 @@ export class NewsService {
     GetSliderNews() {
         return this.httpClient.get(this.config.APIUrl + 'News/NewsHeadlines/2');
     }
+
+    GetLetestNews() {
+        return this.httpClient.get(this.config.APIUrl + 'News/NewsHeadlines/3');
+    }
+    GetTop20NewsForHome() {
+        return this.httpClient.get(this.config.APIUrl + 'News/NewsHeadlines/4');
+    }
 }

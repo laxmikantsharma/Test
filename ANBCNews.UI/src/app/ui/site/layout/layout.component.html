@@ -1,7 +1,7 @@
 <div id="page" class="site">
   <site-header></site-header>
-  <site-slider></site-slider>
-  <div id="content" class="site-content container">
+  <site-slider *ngIf="mainSlider"></site-slider>
+  <div class="container">
     <router-outlet></router-outlet>
   </div>
   <site-footer></site-footer>
