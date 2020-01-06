@@ -20,11 +20,15 @@ DECLARE @MaxNewsInSection INT
 			ORDER BY PublishedDate DESC
 	END
 
-	SELECT [NewsID]
-		  ,[Headlines]
-		  ,[NewsTypeID]
-		  ,[PublishedDate]
+	SELECT NH.[NewsID]
+		  ,NH.[Headlines]
+		  ,NH.[NewsTypeID]
+		  ,NH.[PublishedDate]
+		  ,MIT.NewsType
+		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/assets/images/news/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
 	  FROM [dbo].[NewsHeader] NH 
+	  INNER JOIN [dbo].[MasterNewsType] MIT  ON NH.[NewsTypeID]=MIT.ID
+	  LEFT JOIN [dbo].NewsImage NI  ON NI.[NewsID]=NH.[NewsID]
 	  WHERE 
 	  (NH.NewsTypeID=@NewsTypeID OR @NewsTypeID=0)
 	  AND (NH.NewsID IN(SELECT NS.NewsID FROM @temp NS) OR @SectionID=0)
@@ -32,5 +36,3 @@ DECLARE @MaxNewsInSection INT
 	  ORDER BY NH.PublishedDate DESC
 
 END
-
-

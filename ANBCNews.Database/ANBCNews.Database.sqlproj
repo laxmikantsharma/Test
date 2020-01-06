@@ -58,13 +58,15 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Deployment" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures\" />
-    <Folder Include="Deployment" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\NewsImage.sql" />
+    <PostDeploy Include="Deployment\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <Build Include="dbo\Tables\MasterImageType.sql" />
     <Build Include="dbo\Tables\UserInfo.sql" />
     <Build Include="dbo\Tables\NewsContent.sql" />
@@ -72,13 +74,11 @@
     <Build Include="dbo\Tables\MasterNewsType.sql" />
     <Build Include="dbo\Tables\NewsSection.sql" />
     <Build Include="dbo\Tables\MasterNewsSection.sql" />
+    <Build Include="dbo\Tables\NewsImage.sql" />
     <Build Include="dbo\Stored Procedures\GenerateClass.sql" />
     <Build Include="dbo\Stored Procedures\GetAllNewsType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllImageType.sql" />
     <Build Include="dbo\Stored Procedures\GetNewsDetails.sql" />
     <Build Include="dbo\Stored Procedures\GetNewsHeadlines.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Deployment\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>
