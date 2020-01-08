@@ -13,6 +13,12 @@ namespace ANBCNews.API.Controllers
     [Route("[controller]")]
     public class NewsController : ControllerBase
     {
+        [HttpGet("Detail/{NewsID}")]
+        public NewsHeader GetNewsDetail(int NewsID)
+        {
+            NewsDetails obj = new NewsDetails();
+            return obj.GetNewsDetail(NewsID);
+        }
 
         [HttpGet("NewsHeadlines/{SectionID}")]
         public IEnumerable<NewsHeadline> NewsHeadlines(int SectionID)

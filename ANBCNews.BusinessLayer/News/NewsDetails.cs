@@ -8,7 +8,7 @@ namespace ANBCNews.BusinessLayer.News
 {
     public class NewsDetails
     {
-        public NewsHeader GetNewsHeadlines(long NewsID)
+        public NewsHeader GetNewsDetail(long NewsID)
         {
             NewsDataAccess objDataAccess = new NewsDataAccess();
             return objDataAccess.GetNewsDetail(NewsID);

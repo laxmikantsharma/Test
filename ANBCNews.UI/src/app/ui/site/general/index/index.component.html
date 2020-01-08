@@ -13,7 +13,7 @@
           </div>
           <div class="anbcnews-title">
             <h4>
-              <a href="#">{{item.headlines}}</a>
+              <a [routerLink]="['/story/',item.newsID]">{{item.headline}}</a>
             </h4>
           </div>
           <span class="anbcnews-category">
@@ -44,7 +44,7 @@
             <div class="{{item.imagePath!=''?'col-sm-7':''}} col-xs-12">
               <div class="anbcnews-title">
                 <h3>
-                  <a  [routerLink]="['/story/',item.newsID]">{{item.headlines}}</a>
+                  <a  [routerLink]="['/story/',item.newsID]">{{item.headline}}</a>
                 </h3>
               </div>
               <span class="anbcnews-date">{{item.strPublishedDate}}</span>

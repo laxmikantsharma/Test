@@ -23,4 +23,7 @@ export class NewsService {
     GetTop20NewsForHome() {
         return this.httpClient.get(this.config.APIUrl + 'News/NewsHeadlines/4');
     }
+    GetNewsDetail(newsId:any) {
+        return this.httpClient.get(this.config.APIUrl + 'News/Detail/' + newsId);
+    }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NewsService } from '../../../../@core/services/news.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, RoutesRecognized, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -8,20 +8,23 @@ import { filter } from 'rxjs/operators';
     templateUrl: './newsdetail.component.html',
 })
 export class NewsDetailComponent {
-    objNewsDetail: any = {};
-    constructor(private newsService: NewsService, private router: Router) { }
+    newsDetail: any = {};
+    newsId: any;
+    constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
-        this.GetNewsDetail()
+        this.route.paramMap.subscribe(params => {
+            this.newsId = params.get("newsId");
+            if (this.newsId!="") {
+                this.GetNewsDetail()
+            }
+        });
+        
     }
 
     private GetNewsDetail() {
-        this.router.events.pipe(filter(e => e instanceof NavigationStart)).subscribe(e => {
-            const navigation = this.router.getCurrentNavigation();
-            console.log(navigation)
+        this.newsService.GetNewsDetail(this.newsId).subscribe(res => {
+            this.newsDetail = res != null ? res : {};
         });
-        //this.newsService.GetNewsDetail().subscribe(res => {
-        //    this.objNewsDetail = res != null ? res : {};
-        //});
     }
 }

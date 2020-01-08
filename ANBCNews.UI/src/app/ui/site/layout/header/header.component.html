@@ -12,7 +12,7 @@
           </span>
           <ul class="anbcnews-news-carousel owl-carousel owl-theme">
             <li class="item" *ngFor="let item of lstBreakingNews" >
-              <a [routerLink]="['/story/',item.newsID]">{{item.headlines}}</a>
+              <a [routerLink]="['/story/',item.newsID]">{{item.headline}}</a>
             </li>
           </ul>
         </section>
@@ -64,16 +64,16 @@
           <div class="menu-all-pages-container">
             <ul id="primary-menu" class="menu nav-menu" aria-expanded="false">
               <li>
-                <a href="#">Home</a>
+                <a  [routerLink]="['']">Home</a>
               </li>
               <li>
-                <a href="#">News</a>
+                <a  [routerLink]="['']">News</a>
               </li>
               <li>
-                <a href="#">About Us</a>
+                <a [routerLink]="['/about']">About Us</a>
               </li>
               <li>
-                <a href="#">Contact Us</a>
+                <a [routerLink]="['/contact']">Contact Us</a>
               </li>
             </ul>
           </div>

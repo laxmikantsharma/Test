@@ -61,7 +61,7 @@ article.post p {
   line-height: 25px;
   margin-top: 10px; }
 
-.single-post div.entry-content > p:first-child:first-letter {
+div.entry-content > p:first-child:first-letter {
   float: left;
   font-size: 86px;
   line-height: 75px;
@@ -612,9 +612,8 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: #0a396d; }
-  a:visited {
-    color: #001936; }
+  color: #001936;
+} 
   a:hover, a:focus, a:active {
     color: #0e649b; }
   a:focus {
@@ -2149,19 +2148,19 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
-.single-post .entry-header, .page .entry-header {
+.entry-header, .page .entry-header {
   margin: 30px 0; }
-  .single-post .entry-header img, .page .entry-header img {
+  .entry-header img, .page .entry-header img {
     width: 100%; }
 
-.single-post .entry-title, .page .entry-title {
+.entry-title, .page .entry-title {
   margin-top: 30px;
   color: #001936; }
 
-.single-post .entry-content .archive, .page .entry-content .archive {
+.entry-content .archive, .page .entry-content .archive {
   color: #8b8d91; }
 
-.single-post .entry-content p:first-of-type, .page .entry-content p:first-of-type {
+.entry-content p:first-of-type, .page .entry-content p:first-of-type {
   color: #001936;
   border-bottom: 1px dotted #bababa;
   padding-bottom: 20px; }
@@ -2196,23 +2195,23 @@ a {
       font-family: "Nunito Sans", sans-serif;
       color: #bfbfbf; }
 
-.single-post .anbcnews-breadcrumbs {
+.anbcnews-breadcrumbs {
   margin-top: -20px; }
 
-.single-post .anbcnews-post-meta {
+.anbcnews-post-meta {
   margin-top: 20px; }
-  .single-post .anbcnews-post-meta .anbcnews-category {
+  .anbcnews-post-meta .anbcnews-category {
     padding: 3px 7px 3px 10px;
     line-height: 25px;
     font-weight: 400;
     background: #0a396d; }
-    .single-post .anbcnews-post-meta .anbcnews-category a {
+    .anbcnews-post-meta .anbcnews-category a {
       color: #fff;
       font-size: 13px;
       font-family: "Nunito Sans", sans-serif; }
-    .single-post .anbcnews-post-meta .anbcnews-category:hover, .single-post .anbcnews-post-meta .anbcnews-category:focus-within {
+    .anbcnews-post-meta .anbcnews-category:hover, .anbcnews-post-meta .anbcnews-category:focus-within {
       background: #0e649b; }
-  .single-post .anbcnews-post-meta .anbcnews-date {
+  .anbcnews-post-meta .anbcnews-date {
     line-height: 25px;
     font-weight: 400;
     margin-left: 13px;
@@ -2220,26 +2219,26 @@ a {
     font-family: "Nunito Sans", sans-serif;
     color: #bfbfbf; }
 
-.single-post .anbcnews-tags {
+.anbcnews-tags {
   font-family: "Nunito Sans", sans-serif;
   padding-bottom: 27px;
   margin-bottom: 25px;
   border-bottom: 1px solid #ebebeb; }
-  .single-post .anbcnews-tags:nth-of-type(2) {
+  .anbcnews-tags:nth-of-type(2) {
     display: none; }
-  .single-post .anbcnews-tags strong {
+  .anbcnews-tags strong {
     font-size: 20px;
     color: #001936;
     line-height: 34px;
     position: relative;
     top: 2px; }
-  .single-post .anbcnews-tags a {
+  .anbcnews-tags a {
     padding: 4px 9px 4px 9px;
     margin: -2px 5px;
     border: 1px solid #7c95b1;
     line-height: 33px;
     font-size: 15px; }
-    .single-post .anbcnews-tags a:hover, .single-post .anbcnews-tags a:focus {
+    .anbcnews-tags a:hover, .anbcnews-tags a:focus {
       background: #0a396d;
       color: #fff;
       border: 1px solid #0a396d; }
