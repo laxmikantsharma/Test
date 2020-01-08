@@ -1,32 +1,5 @@
 <div class="col-md-12 anbcnews-content anbcnews-with-sidebar">
    
-   
-  <div  *ngIf="(lstLetestNews.length>0)" id="anbc_news_widget_posts_c-2" class="widget anbc_news_widgets">
-    <h3 class="widget-title"><span>Latest News</span></h3>
-    <div class="row anbcnews-layout-c-row">
-      <div *ngFor="let item of lstLetestNews let i=index" class="col-md-4 col-sm-6 col-xs-12">
-        <div class="anbcnews-blog-post-layout-c">
-          <div class="anbcnews-image">
-            <a [routerLink]="['/news/story/',item.newsID]">
-              <img width="550" height="360" src="{{item.imagePath}}" class="attachment-anbcnews-recent-post-big size-anbcnews-recent-post-big wp-post-image" alt="">
-            </a>
-          </div>
-          <div class="anbcnews-title">
-            <h4>
-              <a [routerLink]="['/news/story/',item.newsID]">{{item.headline}}</a>
-            </h4>
-          </div>
-          <span class="anbcnews-category">
-            <a href="#">{{item.newsType}}</a>
-          </span>
-          <span class="anbcnews-date">{{item.strPublishedDate}}</span>
-          <div class="anbcnews-content">
-            {{item.subcontent}}
-          </div>
-        </div>
-      </div> 
-    </div>
-  </div>
     
   <div id="anbc_news_widget_posts_d-3"  *ngIf="(lstTop20News.length>0)"  class="widget anbc_news_widgets">
       
