@@ -1,0 +1,36 @@
+<div class="comments-area">
+  <div class="comments-form">
+    <div class="container">
+      <div class="col-md-12">
+        <div id="respond" class="comment-respond">
+          <h3 id="reply-title" class="comment-reply-title">
+            <span>Leave a reply</span> <small>
+              <a rel="nofollow" id="cancel-comment-reply-link" href="/newspaper-x/2017/05/10/sed-purus-velit-finibus-non-semper-nonut-utas/#respond" style="display:none;">Cancel reply</a>
+            </small>
+          </h3>
+          <form id="formid" (ngSubmit)="SavComment()" [formGroup]="commentForm" class="comment-form">
+            <span class="comment_notes_before">Your email address will not be published. Required fields are marked *</span>
+            <span>{{DBResponce.message}}</span>
+            <p class="comment-form-comment">
+              <textarea name="message" rows="8" formControlName="Message" required aria-required="true"></textarea>
+            </p>
+            <div class="row">
+              <p class="comment-form-author col-sm-4">
+                <input name="name" formControlName="Name" type="text" placeholder="Name*" value="" size="30" aria-required="true">
+              </p>
+              <p class="comment-form-email col-sm-4">
+                <input formControlName="Email" name="email" type="text" placeholder="Email*" value="" size="30" aria-required="true">
+              </p>
+              <p class="comment-form-url col-sm-4">
+                <input type="text" class="form-control" name="subject" formControlName="Subject" placeholder="Subject" required>
+              </p>
+            </div>
+            <p class="form-submit">
+              <input type="submit" [disabled]="!commentForm.valid" value="Submit" class="submit">
+            </p>
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

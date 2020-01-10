@@ -7206,5 +7206,8 @@ button.close {
         display: none !important
     }
 }
-
-/*# sourceMappingURL=bootstrap.min.css.map */
+.row {
+  margin-right: -15px;
+  margin-left: -15px
+}
+  /*# sourceMappingURL=bootstrap.min.css.map */

@@ -8,13 +8,13 @@ namespace ANBCNews.Model
     {
         public DBResponse()
         {
-            Result = false;
+            ResponseResult = false;
             Message = string.Empty;
         }
         public long ID { get; set; }
         public int Action { get; set; }
         public string Other { get; set; }
         public string Message { get; set; }
-        public bool Result { get; set; }
+        public bool ResponseResult { get; set; }
     }
 }

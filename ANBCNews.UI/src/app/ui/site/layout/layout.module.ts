@@ -5,16 +5,20 @@ import { SliderComponent } from './slider/slider.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-
+import { CommentComponent } from './comments/comment.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [LayoutComponent,
         SliderComponent,
         HeaderComponent,
-        FooterComponent],
+        FooterComponent,
+        CommentComponent],
   imports: [
       CommonModule,
-      RouterModule
+      RouterModule,
+      FormsModule,
+      ReactiveFormsModule  
   ]
 })
 export class LayoutModule { }

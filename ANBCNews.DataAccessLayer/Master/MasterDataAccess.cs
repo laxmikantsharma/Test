@@ -8,10 +8,10 @@ using Dapper;
 
 namespace ANBCNews.DataAccessLayer.Master
 {
-    public class MasterDataAccess 
+    public class CommentAccess 
     {
         SqlDataAccess SqlData = null;
-        public MasterDataAccess()
+        public CommentAccess()
         {
             SqlData = new SqlDataAccess(); 
         }
