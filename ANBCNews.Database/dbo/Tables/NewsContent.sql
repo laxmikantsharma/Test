@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[NewsContent] (
-    [ContentID]   BIGINT         NOT NULL,
+    [ContentID]   BIGINT         IDENTITY (1, 1) NOT NULL,
     [NewsID]      BIGINT         NULL,
     [SubContent]  NVARCHAR (MAX) NULL,
     [MainContent] NVARCHAR (MAX) NULL,

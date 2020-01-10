@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[NewsHeader] (
     [NewsID]        BIGINT         IDENTITY (1, 1) NOT NULL,
-    [Headlines]     NVARCHAR (300) NULL,
+    [Headline]      NVARCHAR (300) NULL,
     [NewsTypeID]    BIGINT         NULL,
     [PublishedDate] DATETIME       CONSTRAINT [DF_NewsHeader_PublishedDate] DEFAULT (getdate()) NULL,
     [IsPublished]   BIT            CONSTRAINT [DF_NewsHeader_IsPublished] DEFAULT ((0)) NULL,

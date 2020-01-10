@@ -21,7 +21,7 @@ DECLARE @MaxNewsInSection INT
 	END
 
 	SELECT NH.[NewsID]
-		  ,NH.[Headlines]
+		  ,NH.[Headline]
 		  ,NH.[NewsTypeID]
 		  ,NH.[PublishedDate]
 		  ,MIT.NewsType
