@@ -5,8 +5,8 @@
       <ul>
         <li *ngFor="let item of lstSliderNews let i=index" class="blazy b-loaded" id="anbcnews-recent-post-{{i}}"  [ngStyle]="{'background-image':'url('+item.imagePath+')'}"  >
           <div class="anbcnews-post-info">
-            <h1 *ngIf="i==0">  <a [routerLink]="['/story/',item.newsID]"> {{item.headline}}</a> </h1>
-            <h4 *ngIf="i!=0"> <a [routerLink]="['/story/',item.newsID]">{{item.headline}}</a> </h4>
+            <h1 *ngIf="i==0">  <a [routerLink]="['/news/story/',item.newsID]"> {{item.headline}}</a> </h1>
+            <h4 *ngIf="i!=0"> <a [routerLink]="['/news/story/',item.newsID]">{{item.headline}}</a> </h4>
             <span class="anbcnews-category">
               <a href="#"> {{item.newsType}}</a>
             </span>
