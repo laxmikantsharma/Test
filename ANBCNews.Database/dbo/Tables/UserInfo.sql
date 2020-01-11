@@ -5,6 +5,7 @@
     [Username]  VARCHAR (50) NULL,
     [Password]  NCHAR (10)   NULL,
     [Email]     VARCHAR (50) NULL,
+    [ProfileImage]     VARCHAR (200) NULL,
     [IsActive]  BIT          CONSTRAINT [DF_UserInfo_IsActive] DEFAULT ((0)) NULL,
     CONSTRAINT [PK_UserInfo] PRIMARY KEY CLUSTERED ([UserID] ASC)
 );
