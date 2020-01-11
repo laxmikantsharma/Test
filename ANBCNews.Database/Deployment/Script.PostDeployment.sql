@@ -23,11 +23,11 @@ SET IDENTITY_INSERT [dbo].[MasterNewsSection] ON
   
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 1))
 BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (1, N'Home Main Slider', 1, 1)
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (1, N'Home Slider News', 1, 1)
 END 
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 2))
 BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (2, N'Home Breaking News', 3, 1)
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (2, N'Header Breaking News', 3, 1)
 END 
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 3))
 BEGIN
