@@ -9,9 +9,11 @@ import { NewsService } from './@core/services/news.service';
 import { HttpConfigInterceptor } from './@core/globals/http.config.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommentService } from './@core/services/comment.service';
+import { Safe } from './@core/pipes/custom.Pipes';
 
 @NgModule({
     declarations: [
+        
     ],
     imports: [
         BrowserModule,
