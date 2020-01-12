@@ -23,4 +23,11 @@ namespace ANBCNews.Model.News
         public int TotalRecored { get; set; }
 
     }
-}
+    public class NewsParam
+    {
+        public long NewsID { get; set; }
+        public int PageNo { get; set; }
+        public int SectionID { get; set; }
+        public int NewsTypeID { get; set; }
+    }
+    }

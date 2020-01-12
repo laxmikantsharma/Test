@@ -24,14 +24,23 @@ namespace ANBCNews.API.Controllers
         public IEnumerable<NewsHeadline> NewsHeadlines(int SectionID)
         {
             NewsDetails obj = new NewsDetails();
-            return obj.GetNewsHeadlines(0, SectionID);
+            NewsParam objNewsParam =  new NewsParam {SectionID= SectionID };
+            return obj.GetNewsHeadlines(objNewsParam);
         }
 
+        [HttpGet("LatestNews/{PageNo}")]
+        public IEnumerable<NewsHeadline> LatestNews(int PageNo)
+        {
+            NewsDetails obj = new NewsDetails();
+            NewsParam objNewsParam =  new NewsParam { PageNo = PageNo };
+            return obj.GetNewsHeadlines(objNewsParam);
+        }
         [HttpGet("NewsHeadlinesByType/{NewsTypeID}")]
         public IEnumerable<NewsHeadline> NewsByType(int NewsTypeID)
         {
             NewsDetails obj = new NewsDetails();
-            return obj.GetNewsHeadlines(NewsTypeID, 0);
+            NewsParam objNewsParam =  new NewsParam { NewsTypeID = NewsTypeID };
+            return obj.GetNewsHeadlines(objNewsParam);
         }
 
         [HttpGet("Search/{PageNo}/{Keyword}")]

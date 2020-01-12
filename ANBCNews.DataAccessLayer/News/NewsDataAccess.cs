@@ -37,13 +37,14 @@ namespace ANBCNews.DataAccessLayer.News
             }
             return null;
         }
-        public IEnumerable<NewsHeadline> GetNewsHeadlines(int NewsTypeID, int SectionID)
+        public IEnumerable<NewsHeadline> GetNewsHeadlines(NewsParam objNewsParam)
         {
             try
             {
                 DynamicParameters objParameter = new DynamicParameters();
-                objParameter.Add("@NewsTypeID", NewsTypeID);
-                objParameter.Add("@SectionID", SectionID);
+                objParameter.Add("@NewsTypeID", objNewsParam.NewsTypeID);
+                objParameter.Add("@SectionID", objNewsParam.SectionID);
+                objParameter.Add("@PageNo", objNewsParam.PageNo);
                 return SqlData.dataContext.Query<NewsHeadline>("[GetNewsHeadlines]", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)

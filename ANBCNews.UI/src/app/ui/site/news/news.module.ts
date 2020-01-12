@@ -7,7 +7,7 @@ import { Safe } from '../../../@core/pipes/custom.Pipes';
 import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
     declarations: [NewsDetailComponent, IndexComponent, Safe,SearchComponent,],
@@ -16,7 +16,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
       NewsRoutingModule,
       FormsModule,
       ReactiveFormsModule,
-      NgxPaginationModule
+      NgxPaginationModule,
+      InfiniteScrollModule
   ]
 })
 export class NewsModule { }
