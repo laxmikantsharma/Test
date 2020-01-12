@@ -9,22 +9,22 @@ import { NewsService } from './@core/services/news.service';
 import { HttpConfigInterceptor } from './@core/globals/http.config.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommentService } from './@core/services/comment.service';
-import { Safe } from './@core/pipes/custom.Pipes';
-
+import { Safe } from './@core/pipes/custom.Pipes'; 
 @NgModule({
     declarations: [
-        
+
     ],
     imports: [
         BrowserModule,
         RouterModule,
         LayoutModule,
         AppRoutingModule,
-        HttpClientModule  
+        HttpClientModule
+         
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
         AppConfig,
-        NewsService,
+        NewsService, 
         CommentService],
     bootstrap: [LayoutComponent]
 })

@@ -20,5 +20,7 @@ namespace ANBCNews.Model.News
             get { return (string.IsNullOrEmpty(_strPublishedDate) ? PublishedDate.ToString("dd MMM yyyy", CultureInfo.InvariantCulture) : _strPublishedDate); }
             set { _strPublishedDate = value; }
         }
+        public int TotalRecored { get; set; }
+
     }
 }

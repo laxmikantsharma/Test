@@ -52,6 +52,22 @@ namespace ANBCNews.DataAccessLayer.News
             }
             return null;
         }
+        public IEnumerable<NewsHeadline> SearchNews(int PageNo, string Keyword)
+        {
+            try
+            {
+                DynamicParameters objParameter = new DynamicParameters();
+                objParameter.Add("@Keyword", Keyword);
+                objParameter.Add("@PageNo", PageNo);
+                
+                return SqlData.dataContext.Query<NewsHeadline>("[SearchNews]", objParameter, commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                CLogger.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in News Data Access  while calling SearchNews Action, Ex.: " + ex.Message);
+            }
+            return null;
+        }
     }
 
 }

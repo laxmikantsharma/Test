@@ -18,12 +18,12 @@
         </section>
       </div>
       <div class="col-lg-4">
-        <form role="search" method="get" id="searchform" action="#">
+        <form  id="searchform"  (ngSubmit)="Search()" [formGroup]="serachForm">
           <label>
             <span class="screen-reader-text">Search for:</span>
-            <input class="search-field" placeholder="Search..." value="" name="s" type="search">
+            <input class="search-field" formControlName="keyword" placeholder="Search..." value="" name="keyword" type="search">
           </label>
-          <button class="search-submit" value="Search  " type="submit"><span class="fa fa-search"></span></button>
+          <button class="search-submit" value="Search" type="submit"><span class="fa fa-search"></span></button>
         </form>
         <div class="top-header-icons">
           <div id="menu-social" class="menu pull-right">

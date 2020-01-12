@@ -33,5 +33,12 @@ namespace ANBCNews.API.Controllers
             NewsDetails obj = new NewsDetails();
             return obj.GetNewsHeadlines(NewsTypeID, 0);
         }
+
+        [HttpGet("Search/{PageNo}/{Keyword}")]
+        public IEnumerable<NewsHeadline> SearchNews(int PageNo,string Keyword)
+        {
+            NewsDetails obj = new NewsDetails();
+            return obj.SearchNews(PageNo,Keyword);
+        }
     }
 } 

@@ -18,7 +18,11 @@ namespace ANBCNews.BusinessLayer.News
             NewsDataAccess objDataAccess = new NewsDataAccess();
             return objDataAccess.GetNewsHeadlines(NewsTypeID, SectionID);
         }
-
+        public IEnumerable<NewsHeadline> SearchNews(int PageNo, string Keyword)
+        {
+            NewsDataAccess objDataAccess = new NewsDataAccess();
+            return objDataAccess.SearchNews(PageNo,Keyword);
+        }
     }
 
 }

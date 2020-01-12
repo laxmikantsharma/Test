@@ -4,13 +4,19 @@ import { NewsRoutingModule } from './news-routing.module';
 import { NewsDetailComponent } from './detail/newsdetail.component';
 import { IndexComponent } from './index/index.component';
 import { Safe } from '../../../@core/pipes/custom.Pipes';
+import { SearchComponent } from './search/search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
-    declarations: [NewsDetailComponent, IndexComponent, Safe],
+    declarations: [NewsDetailComponent, IndexComponent, Safe,SearchComponent,],
   imports: [
     CommonModule,
-    NewsRoutingModule
+      NewsRoutingModule,
+      FormsModule,
+      ReactiveFormsModule,
+      NgxPaginationModule
   ]
 })
 export class NewsModule { }
