@@ -8,9 +8,10 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TradingNewsComponent } from './Trading/trading.news.component';
 
 @NgModule({
-    declarations: [NewsDetailComponent, IndexComponent, Safe,SearchComponent,],
+    declarations: [NewsDetailComponent, IndexComponent, Safe, SearchComponent, TradingNewsComponent],
   imports: [
     CommonModule,
       NewsRoutingModule,
