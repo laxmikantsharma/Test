@@ -2970,16 +2970,18 @@ a {
     top: 0px;
     width: 100%;
     left: -10px; }
-  .anbcnews-news-ticker .anbcnews-module-title {
-    color: #FFF;
-    padding: 0px 21px 0px 11px;
-    font-size: 15px;
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: bold;
-    background: #0a396d;
-    display: inline-block;
-    position: relative;
-    line-height: 42px; }
+.anbcnews-news-ticker .anbcnews-module-title {
+  color: #FFF;
+  padding: 0px 21px 0px 11px;
+  font-size: 15px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
+  background: #0a396d;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  line-height: 42px;
+}
     .anbcnews-news-ticker .anbcnews-module-title .fa-stack-1x {
       font-size: 13px;
       left: 3px;
@@ -3210,3 +3212,7 @@ object {
     outline: none;
     background: #d4d4d4;
   }
+.breaking_divder {
+  position: relative;
+  top: -1px;
+}
