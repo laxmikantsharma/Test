@@ -358,12 +358,14 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   border: 1px solid;
-  border-color: #ccc #ccc #bbb;
+  /*border-color: #ccc #ccc #bbb;*/
   background: #0a396d;
   color: #fff;
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 1; }
+  /*font-size: 12px;*/
+  font-size: 1.75rem;
+  /*line-height: 1;*/
+
+}
   button:hover,
   input[type="button"]:hover,
   input[type="reset"]:hover,
@@ -3183,4 +3185,4 @@ object {
 
 .gallery-caption {
   display: block; }
- 
+

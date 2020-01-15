@@ -82,5 +82,7 @@
     <Build Include="dbo\Stored Procedures\GetNewsDetails.sql" />
     <Build Include="dbo\Stored Procedures\GetNewsHeadlines.sql" />
     <Build Include="dbo\Stored Procedures\SaveComment.sql" />
+    <Build Include="dbo\Tables\Contact.sql" />
+    <Build Include="dbo\Stored Procedures\SaveContact.sql" />
   </ItemGroup>
 </Project>
