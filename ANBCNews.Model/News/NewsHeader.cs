@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ANBCNews.Model.User;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -24,15 +25,8 @@ namespace ANBCNews.Model.News
             set { _strPublishedDate = value; }
         }
 
-        public bool? IsPublished { get; set; }
-
-        public DateTime? CreatedDate { get; set; }
-
-        public long? CreatedBy { get; set; }
-
-        public DateTime? ModifyDate { get; set; }
-
-        public long? ModifyBy { get; set; }
+        public bool? IsPublished { get; set; }  
+        public UserInfo objUserInfo { get; set; }
 
     }
 

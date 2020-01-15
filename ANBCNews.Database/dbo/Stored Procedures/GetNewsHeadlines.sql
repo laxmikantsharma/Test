@@ -1,12 +1,16 @@
 ﻿
 CREATE PROCEDURE [dbo].[GetNewsHeadlines]
 @NewsTypeID INT=0,
-@SectionID INT=0
+@SectionID INT=0,
+@PageNo INT=1
 AS
 BEGIN
 
-DECLARE   @temp TABLE(NewsID INT)  
-DECLARE @MaxNewsInSection INT 
+DECLARE   @temp TABLE(NewsID INT) 
+DECLARE @MaxNewsInSection INT , @PageSize INT =10,@TotalRecored INT
+
+IF @PageNo=0
+	SET @PageNo=1
 
 	IF(@SectionID>0)
 	BEGIN
@@ -18,6 +22,7 @@ DECLARE @MaxNewsInSection INT
 			JOIN [dbo].[NewsSection] NS ON NH.NewsID =NS.NewsID
 			WHERE NS.SectionID=@SectionID 
 			ORDER BY PublishedDate DESC
+			SET @PageSize=1000
 	END
 
 	SELECT NH.[NewsID]
@@ -34,5 +39,6 @@ DECLARE @MaxNewsInSection INT
 	  AND (NH.NewsID IN(SELECT NS.NewsID FROM @temp NS) OR @SectionID=0)
 	  AND  NH.IsPublished=1 
 	  ORDER BY NH.PublishedDate DESC
-
+	   OFFSET (@PageNo -1) * @PageSize ROWS
+	  FETCH NEXT @PageSize ROWS ONLY
 END

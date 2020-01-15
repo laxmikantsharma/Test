@@ -35,7 +35,8 @@
               "src/assets/js/functions.js",
               "src/assets/js/navigation.js",
               "src/assets/js/skip-link-focus-fix.js",
-              "src/assets/vendors/bootstrap/bootstrap.min.js"
+              "src/assets/vendors/bootstrap/bootstrap.min.js",
+              "src/assets/js/jquery.marquee.min.js"
             ]
           },
           "configurations": {

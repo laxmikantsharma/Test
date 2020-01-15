@@ -1,9 +1,11 @@
 ﻿
 CREATE PROCEDURE [dbo].[GetNewsDetails]
-@NewsID BIGINT
+@NewsID BIGINT,
+@Group varchar(10)
 AS
 BEGIN
-SELECT NH.[NewsID]
+
+SELECT	NH.[NewsID]
 		  ,NH.[Headline]
 		  ,NH.[NewsTypeID]
 		  ,NH.[PublishedDate]
@@ -18,5 +20,11 @@ SELECT NH.[NewsID]
 	  NH.NewsID=@NewsID  
 	  AND  NH.IsPublished=1 
 	  ORDER BY NH.PublishedDate DESC
-
+	
+	IF(@Group='Full')
+	  SELECT UI.FirstName,UI.LastName,UI.Email,UI.ProfileImage 
+	   ,CASE WHEN ISNULL(UI.ProfileImage,'')!='' THEN '/assets/images/user/'+CAST(UI.UserID AS Varchar(10))+'/'+UI.ProfileImage ELSE '' END  ProfileImage
+		   FROM UserInfo UI
+	   JOIN [dbo].[NewsHeader] NH ON NH.CreatedBy=UI.UserID
+	   WHERE NH.NewsID=@NewsID 
 END

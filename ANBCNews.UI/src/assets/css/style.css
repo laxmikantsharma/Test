@@ -1904,7 +1904,7 @@ a {
     .anbc_news_widgets .anbcnews-blog-post-layout-b .anbcnews-image {
       margin-bottom: 10px; } }
   .anbc_news_widgets .anbcnews-blog-post-layout-b .anbcnews-image {
-    margin-bottom: 25px;
+     
     max-height: 225px;
     display: inline-block;
     float: left; }
@@ -1947,7 +1947,9 @@ a {
     width: 100%; } }
 
 .anbc_news_widgets .anbcnews-blog-post-layout-c {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  min-height: 285px;
+}
   @media (max-width: 767px) {
     .anbc_news_widgets .anbcnews-blog-post-layout-c {
       margin-bottom: 10px; } }
@@ -1955,7 +1957,7 @@ a {
     width: 100%;
     display: block;
     max-height: 225px;
-    margin-bottom: 30px; }
+    margin-bottom: 10px; }
     .anbc_news_widgets .anbcnews-blog-post-layout-c .anbcnews-image > img {
       width: 100%; }
   .anbc_news_widgets .anbcnews-blog-post-layout-c .anbcnews-content {
@@ -1983,7 +1985,7 @@ a {
     font-size: 12px;
     font-family: "Nunito Sans", sans-serif;
     color: #bfbfbf; }
-  .anbc_news_widgets .anbcnews-blog-post-layout-c .anbcnews-title h4 > a {
+  .anbcnews-blog-post-layout-c .anbcnews-title h4 > a {
     color: #001936;
     font-weight: 700; }
     .anbc_news_widgets .anbcnews-blog-post-layout-c .anbcnews-title h4 > a:hover, .anbc_news_widgets .anbcnews-blog-post-layout-c .anbcnews-title h4 > a:focus {
@@ -2970,16 +2972,18 @@ a {
     top: 0px;
     width: 100%;
     left: -10px; }
-  .anbcnews-news-ticker .anbcnews-module-title {
-    color: #FFF;
-    padding: 0px 21px 0px 11px;
-    font-size: 15px;
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: bold;
-    background: #0a396d;
-    display: inline-block;
-    position: relative;
-    line-height: 42px; }
+.anbcnews-news-ticker .anbcnews-module-title {
+  color: #FFF;
+  padding: 0px 21px 0px 11px;
+  font-size: 15px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
+  background: #0a396d;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  line-height: 42px;
+}
     .anbcnews-news-ticker .anbcnews-module-title .fa-stack-1x {
       font-size: 13px;
       left: 3px;
@@ -3186,3 +3190,31 @@ object {
 .gallery-caption {
   display: block; }
 
+.paginator {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+}
+
+  .paginator /deep/ .ngx-pagination .current {
+    background: rgb(131, 131, 131);
+    border-radius: 4px;
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .paginator /deep/ .ngx-pagination a:hover, .ngx-pagination button:hover {
+    background: #d4d4d4;
+    border-radius: 3px;
+    padding-left: 9px;
+    padding-right: 9px;
+    text-decoration: none;
+  }
+
+  .paginator /deep/ .ngx-pagination a:focus, .ngx-pagination button:focus {
+    outline: none;
+    background: #d4d4d4;
+  }
+.breaking_divder {
+  position: relative;
+  top: -1px;
+}

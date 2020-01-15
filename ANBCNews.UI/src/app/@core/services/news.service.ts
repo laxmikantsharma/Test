@@ -26,4 +26,14 @@ export class NewsService {
     GetNewsDetail(newsId:any) {
         return this.httpClient.get(this.config.APIUrl + 'News/Detail/' + newsId);
     }
+
+    GetAllLatestNews(pageNo: any) {
+        return this.httpClient.get(this.config.APIUrl + 'News/LatestNews/' + pageNo);
+    }
+    SearchNews(PageNo: any, keyword: string) {
+        return this.httpClient.get(this.config.APIUrl + 'news/search/'+PageNo+'/' + keyword);
+    }
+    GetTradingNews() {
+        return this.httpClient.get(this.config.APIUrl + 'News/NewsHeadlines/5');
+    }
 }

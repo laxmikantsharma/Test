@@ -1,31 +1,33 @@
 <div class="row">
-  <div class=" col-md-12 anbcnews-content anbcnews-with-sidebar">
-    <br />
-    <br />
-    <div id="anbc_news_widget_posts_d-3" *ngIf="(lstTop20News.length>0)" class="widget anbc_news_widgets">
-
-      <div class="row anbcnews-layout-b-row">
-        <div *ngFor="let item of lstTop20News let i=index" class="col-md-4 col-xs-6">
-          <div class="anbcnews-blog-post-layout-b border">
-            <div *ngIf="item.imagePath!=''" class="col-sm-5 col-xs-12">
-              <div class="anbcnews-image">
-                <a [routerLink]="['/news/story/',item.newsID]">
-                  <img width="550" height="360" src="{{item.imagePath}}" class="attachment-anbcnews-recent-post-big size-anbcnews-recent-post-big wp-post-image" alt="">
-                </a>
-              </div>
+  <div id="primary" class="content-area col-md-8 col-sm-8 col-xs-12 anbcnews-sidebar">
+    <div class="widget anbc_news_widgets">
+      <h3 class="page-title"><span>न्यूज़</span></h3><br />
+      <div *ngIf="(lstNews.length>0)" infinite-scroll [infiniteScrollDistance]="1"
+           [infiniteScrollThrottle]="300" (scrolled)="onScrollDown()" class="row anbcnews-layout-c-row">
+        <div *ngFor="let item of lstNews" class="col-md-4 col-sm-6 col-xs-12">
+          <div class="anbcnews-blog-post-layout-c">
+            <div class="anbcnews-image">
+              <a [routerLink]="['/news/story/',item.newsID]">
+                <img width="550" height="360" src="{{item.imagePath}}" class="attachment-anbcnews-recent-post-big size-anbcnews-recent-post-big wp-post-image" alt="">
+              </a>
             </div>
-            <div class="{{item.imagePath!=''?'col-sm-7':''}} col-xs-12">
-              <div class="anbcnews-title">
-                <h3>
-                  <a [routerLink]="['/news/story/',item.newsID]">{{item.headline}}</a>
-                </h3>
-              </div>
-              <span class="anbcnews-date">{{item.strPublishedDate}}</span>
+            <div class="anbcnews-title">
+              <h4>
+                <a [routerLink]="['/news/story/',item.newsID]">{{item.headline}}</a>
+              </h4>
+            </div>
+            <span class="anbcnews-category">
+              <a href="#">{{item.newsType}}</a>
+            </span>
+            <span class="anbcnews-date">{{item.strPublishedDate}}</span>
+            <div class="anbcnews-content">
+              {{item.subcontent}}
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <site-trading-news></site-trading-news>
 </div>
 

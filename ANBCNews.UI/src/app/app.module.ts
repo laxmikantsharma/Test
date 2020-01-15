@@ -21,7 +21,8 @@ import { Safe } from './@core/pipes/custom.Pipes';
         RouterModule,
         LayoutModule,
         AppRoutingModule,
-        HttpClientModule  
+        HttpClientModule
+         
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
         AppConfig,
