@@ -86,4 +86,7 @@
     <Build Include="dbo\Tables\Contact.sql" />
     <Build Include="dbo\Stored Procedures\SaveContact.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ANBCNews.Database.publish.xml" />
+  </ItemGroup>
 </Project>

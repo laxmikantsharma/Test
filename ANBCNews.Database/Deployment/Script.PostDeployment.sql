@@ -23,7 +23,7 @@ SET IDENTITY_INSERT [dbo].[MasterNewsSection] ON
   
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 1))
 BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (1, N'Home Slider News', 1, 1)
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (1, N'Home Slider News', 5, 1)
 END 
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 2))
 BEGIN
@@ -37,7 +37,10 @@ IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 4))
 BEGIN
 INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (4, N'Home News ', 20, 1)
 END  
-
+IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 5))
+BEGIN
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (5, N'Trading News', 1, 1)
+END  
 SET IDENTITY_INSERT [dbo].[MasterNewsSection] OFF
 
 GO
