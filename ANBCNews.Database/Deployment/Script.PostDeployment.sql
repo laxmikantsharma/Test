@@ -46,7 +46,7 @@ SET IDENTITY_INSERT [dbo].[MasterNewsType] ON
 
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsType] WHERE [ID] = 1))
 BEGIN
-	INSERT [dbo].[MasterNewsType] ([ID], [NewsType], [IsActive]) VALUES (1, N'General News', 1)
+	INSERT [dbo].[MasterNewsType] ([ID], [NewsType], [IsActive]) VALUES (1, N'सामान्य न्यूज़', 1)
 END
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsType] WHERE [ID] = 2))
 BEGIN

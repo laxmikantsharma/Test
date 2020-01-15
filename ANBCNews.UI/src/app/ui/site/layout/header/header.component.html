@@ -11,17 +11,17 @@
             Breaking News
           </span>
           <ul class="anbcnews-news-carousel marquee owl-carousel owl-theme">
-            <li class="item" *ngFor="let item of lstBreakingNews" >
-              <a [routerLink]="['/news/story/',item.newsID]">{{item.headline}}  <span class="breaking_divder">|</span></a>  
+            <li class="item" *ngFor="let item of lstBreakingNews">
+              <a [routerLink]="['/news/story/',item.newsID]">{{item.headline}}  <span class="breaking_divder">|</span></a>
             </li>
           </ul>
         </section>
       </div>
       <div class="col-lg-4">
-        <form  id="searchform"  (ngSubmit)="Search()" [formGroup]="serachForm">
+        <form id="searchform" (ngSubmit)="Search()" [formGroup]="serachForm">
           <label>
             <span class="screen-reader-text">Search for:</span>
-            <input class="search-field" formControlName="keyword" placeholder="Search..." value="" name="keyword" type="search">
+            <input class="search-field" formControlName="keyword" placeholder="खोज..." value="" name="keyword" type="search">
           </label>
           <button class="search-submit" value="Search" type="submit"><span class="fa fa-search"></span></button>
         </form>
@@ -45,7 +45,7 @@
     <div class="row">
       <div class="col-md-4 header-logo">
         <a [routerLink]="'/'" rel="home">
-          <img width="280"  src="/assets/images/logo.png" class="custom-logo" alt="anbcnews X">
+          <img width="280" src="/assets/images/logo.png" class="custom-logo" alt="anbcnews X">
         </a>
       </div>
       <div class="col-md-8 header-banner">
@@ -63,11 +63,29 @@
 
           <div class="menu-all-pages-container">
             <ul id="primary-menu" class="menu nav-menu" aria-expanded="false">
+              <!--<li>
+    <a  [routerLink]="['']">Home</a>
+  </li>-->
               <li>
-                <a  [routerLink]="['']">Home</a>
+                <a [routerLink]="['/news']">न्यूज़</a>
               </li>
               <li>
-                <a  [routerLink]="['/news']">News</a>
+                <a [routerLink]="['/news']">बड़ी ख़बरें </a>
+              </li>
+              <li>
+                <a [routerLink]="['/news']">चुनाव</a>
+              </li>
+              <li>
+                <a [routerLink]="['/news']">खेल </a>
+              </li>
+              <li>
+                <a [routerLink]="['/news']">मनोरंजन </a>
+              </li>
+              <li>
+                <a [routerLink]="['/news']">वायरल केंद्र </a>
+              </li>
+              <li>
+                <a [routerLink]="['/news']">क्राइम </a>
               </li>
               <li>
                 <a [routerLink]="['/about']">About Us</a>
@@ -83,4 +101,3 @@
 
   </nav><!-- #site-navigation -->
 </header><!-- #masthead -->
-
