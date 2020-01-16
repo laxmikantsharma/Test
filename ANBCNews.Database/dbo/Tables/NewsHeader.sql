@@ -9,7 +9,6 @@
     [ModifyDate]    DATETIME       NULL,
     [ModifyBy]      BIGINT         NULL,
     CONSTRAINT [PK_NewsHeader] PRIMARY KEY CLUSTERED ([NewsID] ASC),
-    CONSTRAINT [FK_NewsHeader_MasterImageType] FOREIGN KEY ([NewsTypeID]) REFERENCES [dbo].[MasterImageType] ([ImageTypeID]),
-    CONSTRAINT [FK_NewsHeader_NewsHeader] FOREIGN KEY ([NewsID]) REFERENCES [dbo].[NewsHeader] ([NewsID])
+    CONSTRAINT [FK_NewsHeader_MasterNewsType] FOREIGN KEY ([NewsTypeID]) REFERENCES [dbo].[MasterNewsType] ([ID])
 );
 

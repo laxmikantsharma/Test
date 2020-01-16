@@ -5,6 +5,10 @@ export class AppConfig {
     public APIUrl: string = environment.APIUrl;
     public DomainName: string = environment.DomainName;
     public IsVisibleComment: boolean = false;
+     
+ 
     constructor() {
+     
     }
 }
+ 

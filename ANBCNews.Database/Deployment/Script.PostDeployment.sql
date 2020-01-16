@@ -35,7 +35,7 @@ INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection]
 END 
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 4))
 BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (4, N'Home News ', 20, 1)
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (4, N'Home News', 20, 1)
 END  
 IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 5))
 BEGIN

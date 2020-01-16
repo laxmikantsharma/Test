@@ -3,7 +3,11 @@ jQuery(document).ready(function ($) {
       $('.marquee').marquee({
           duration: 9000,
             pauseOnHover: true
-        }); clearInterval(sa); }, 1000);
+      });
+        if ($('.marquee').html() !== 'undefined') {
+            clearInterval(sa); 
+        }
+    }, 1000);
     
 });
  

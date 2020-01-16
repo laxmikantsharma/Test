@@ -1,7 +1,7 @@
 <div class="row">
   <div id="primary" class="content-area col-md-8 col-sm-8 col-xs-12 anbcnews-sidebar">
     <div class="widget anbc_news_widgets">
-      <h3 class="page-title"><span>न्यूज़</span></h3><br />
+      <h3 class="page-title"><span>{{pageTitle}}</span></h3><br />
       <div *ngIf="(lstNews.length>0)" infinite-scroll [infiniteScrollDistance]="1"
            [infiniteScrollThrottle]="300" (scrolled)="onScrollDown()" class="row anbcnews-layout-c-row">
         <div *ngFor="let item of lstNews" class="col-md-4 col-sm-6 col-xs-12">
