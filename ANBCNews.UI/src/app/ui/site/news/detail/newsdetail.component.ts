@@ -11,23 +11,35 @@ import { AppConfig } from '../../../../@core/globals/app.config';
 export class NewsDetailComponent {
     newsDetail: any = {};
     newsId: any;
-    constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router,private config: AppConfig) { }
+    constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router, private config: AppConfig) { }
     ngOnInit() {
         this.route.paramMap.subscribe(params => {
             this.newsId = params.get("newsId");
-            if (this.newsId!="") {
+            if (this.newsId != "") {
                 this.GetNewsDetail()
             }
         });
-        this.config.IsVisibleComment = true;
+       // this.config.IsVisibleComment = true;
     }
+    ngAfterViewInit() {
+        let node = document.createElement('script');
+        node.innerText = " var VUUKLE_CONFIG = { apiKey: '4c33d842-fe9c-46f9-8c88-0b15b5f2f3f6', articleId: '" + this.newsId + "',host:'asianewsbroadcastingcompany.in'  }; (function () { var d = document,  s = d.createElement('script');s.id ='VUUKLE_CONFIG1';  s.src = 'https://cdn.vuukle.com/platform.js'; (d.head || d.body).appendChild(s); })(); VUUKLE_PLATFORM=undefined;" ;
+        node.type = 'text/javascript';
+        node.async = false;
+        node.id = "VUUKLE_CONFIG";
+        node.charset = 'utf-8';
 
+        document.getElementsByTagName('head')[0].appendChild(node);
+
+    }
     private GetNewsDetail() {
         this.newsService.GetNewsDetail(this.newsId).subscribe(res => {
             this.newsDetail = res != null ? res : {};
         });
     }
     ngOnDestroy() {
-        this.config.IsVisibleComment = false;
+        //this.config.IsVisibleComment = false;
+        document.getElementsByTagName('head')[0].removeChild(document.getElementById('VUUKLE_CONFIG'));
+        document.getElementsByTagName('head')[0].removeChild(document.getElementById('VUUKLE_CONFIG1'));
     }
 }
