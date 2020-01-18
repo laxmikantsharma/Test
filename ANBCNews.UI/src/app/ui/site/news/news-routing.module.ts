@@ -7,6 +7,7 @@ import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [{ path: 'story/:newsId', component: NewsDetailComponent },
     { path: '', component: IndexComponent },
+    { path: ':newsType', component: IndexComponent },
     { path: 'index', component: IndexComponent },
     { path: 'search/:key', component: SearchComponent }];
 

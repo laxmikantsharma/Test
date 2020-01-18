@@ -30,6 +30,9 @@ export class NewsService {
     GetAllLatestNews(pageNo: any) {
         return this.httpClient.get(this.config.APIUrl + 'News/LatestNews/' + pageNo);
     }
+    GetNewsByType(newsTypeID: any, pageNo: any) {
+        return this.httpClient.get(this.config.APIUrl + 'News/NewsByType/' + newsTypeID + '/' + pageNo);
+    }
     SearchNews(PageNo: any, keyword: string) {
         return this.httpClient.get(this.config.APIUrl + 'news/search/'+PageNo+'/' + keyword);
     }
