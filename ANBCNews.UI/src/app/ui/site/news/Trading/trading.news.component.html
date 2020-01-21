@@ -8,13 +8,13 @@
           <div *ngFor="let item of lstTradingNews" class="col-md-12 col-sm-12 col-xs-12">
             <div class="anbcnews-blog-post-layout-c">
               <div class="anbcnews-image">
-                <a [routerLink]="['/news/story/',item.newsID]">
+                <a [routerLink]="['/news/story/',item.queryParam]">
                   <img width="550" height="360" src="{{item.imagePath}}" class="attachment-anbcnews-recent-post-big size-anbcnews-recent-post-big wp-post-image" alt="">
                 </a>
               </div>
               <div class="anbcnews-title">
                 <h4>
-                  <a [routerLink]="['/news/story/',item.newsID]">{{item.headline}}</a>
+                  <a [routerLink]="['/news/story/',item.queryParam]">{{item.headline}}</a>
                 </h4>
               </div>
               <span class="anbcnews-category">

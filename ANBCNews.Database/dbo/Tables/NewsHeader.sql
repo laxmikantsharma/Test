@@ -4,6 +4,7 @@
     [NewsTypeID]    BIGINT         NULL,
     [PublishedDate] DATETIME       CONSTRAINT [DF_NewsHeader_PublishedDate] DEFAULT (getdate()) NULL,
     [IsPublished]   BIT            CONSTRAINT [DF_NewsHeader_IsPublished] DEFAULT ((0)) NULL,
+    [PageUrl]      NVARCHAR (300) NULL,
     [CreatedDate]   DATETIME       CONSTRAINT [DF_NewsHeader_CreatedDate] DEFAULT (getdate()) NULL,
     [CreatedBy]     BIGINT         NULL,
     [ModifyDate]    DATETIME       NULL,

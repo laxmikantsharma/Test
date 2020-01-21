@@ -9,6 +9,7 @@ SELECT	NH.[NewsID]
 		  ,NH.[Headline]
 		  ,NH.[NewsTypeID]
 		  ,NH.[PublishedDate]
+		  ,NH.[PageUrl]
 		  ,MIT.NewsType
 		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/assets/images/news/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
 		  ,NC.MainContent 
