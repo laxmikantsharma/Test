@@ -7,14 +7,15 @@ AS
 BEGIN
 
 DECLARE   @temp TABLE(NewsID INT) 
-DECLARE @MaxNewsInSection INT , @PageSize INT =10,@TotalRecored INT
+DECLARE @MaxNewsInSection INT ,@ImageSize varchar(15)='', @PageSize INT =10,@TotalRecored INT
 
 IF @PageNo=0
 	SET @PageNo=1
 
 	IF(@SectionID>0)
 	BEGIN
-		SELECT @MaxNewsInSection=CASE WHEN MNS.MaxNewsInSection>0 THEN  MNS.MaxNewsInSection ELSE 200 END 
+		SELECT @MaxNewsInSection=CASE WHEN MNS.MaxNewsInSection>0 THEN  MNS.MaxNewsInSection ELSE 200 END ,
+		@ImageSize= CASE WHEN ISNULL( MNS.ImageSize,'')!='' THEN   MNS.ImageSize+'/' ELSE '' END 
 		FROM [dbo].[MasterNewsSection] MNS WHERE  MNS.SectionID=@SectionID 
 
 		  INSERT INTO @temp  SELECT TOP(@MaxNewsInSection) NH.[NewsID] 
@@ -31,7 +32,7 @@ IF @PageNo=0
 		  ,NH.[PublishedDate]
 		  ,NH.[PageUrl]
 		  ,MIT.NewsType
-		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/assets/images/news/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
+		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/image/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+@ImageSize+''+NI.Name ELSE '' END  ImagePath
 	  FROM [dbo].[NewsHeader] NH 
 	  INNER JOIN [dbo].[MasterNewsType] MIT  ON NH.[NewsTypeID]=MIT.ID
 	  LEFT JOIN [dbo].NewsImage NI  ON NI.[NewsID]=NH.[NewsID]

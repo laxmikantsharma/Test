@@ -49,5 +49,7 @@ namespace ANBCNews.API.Controllers
             NewsDetails obj = new NewsDetails();
             return obj.SearchNews(PageNo,Keyword);
         }
+
     }
+
 } 

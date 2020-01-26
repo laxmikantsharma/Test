@@ -11,7 +11,7 @@ SELECT	NH.[NewsID]
 		  ,NH.[PublishedDate]
 		  ,NH.[PageUrl]
 		  ,MIT.NewsType
-		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/assets/images/news/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
+		    ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/image/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
 		  ,NC.MainContent 
 	  FROM [dbo].[NewsHeader] NH 
 	  INNER JOIN [dbo].[MasterNewsType] MIT  ON NH.[NewsTypeID]=MIT.ID

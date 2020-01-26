@@ -14,7 +14,7 @@
     <div *ngIf="newsDetail.imagePath!=''" class="anbcnews-image">
       <img width="700" src="{{newsDetail.imagePath}}" alt="">
     </div>
-    <article class="post type-post status-publish format-standard has-post-thumbnail hentry category-events">
+    <article  *ngIf="newsDetail.headline!=null" class="post type-post status-publish format-standard has-post-thumbnail hentry category-events">
       <div class="entry-content" [innerHtml]="newsDetail.mainContent | safeHtml: 'html'">
       </div>
     </article> 

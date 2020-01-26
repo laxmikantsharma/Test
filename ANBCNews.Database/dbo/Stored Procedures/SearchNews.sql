@@ -22,7 +22,7 @@ IF @PageNo=0
 		  ,NH.[NewsTypeID]
 		  ,NH.[PublishedDate]
 		  ,MIT.NewsType
-		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/assets/images/news/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
+		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/image/'+CAST(NH.[NewsID] AS Varchar(10))+'/230x184/'+NI.Name ELSE '' END  ImagePath
 		,@TotalRecored AS TotalRecored
 	  FROM [dbo].[NewsHeader] NH 
 	  INNER JOIN [dbo].[MasterNewsType] MIT  ON NH.[NewsTypeID]=MIT.ID

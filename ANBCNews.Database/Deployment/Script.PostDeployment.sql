@@ -21,26 +21,17 @@ GO
 
 SET IDENTITY_INSERT [dbo].[MasterNewsSection] ON  
   
-IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 1))
-BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (1, N'Home Slider News', 5, 1)
-END 
-IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 2))
-BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (2, N'Header Breaking News', 3, 1)
-END 
-IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 3))
-BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (3, N'Home Latest News ', 3, 1)
-END 
-IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 4))
-BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (4, N'Home News', 20, 1)
-END  
-IF(NOT EXISTS(SELECT 1 FROM [MasterNewsSection] WHERE [SectionID] = 5))
-BEGIN
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [IsActive]) VALUES (5, N'Trading News', 1, 1)
-END  
+GO
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (1, N'Home Main Slider', 10, N'500x400', 1)
+GO
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (2, N'Home Breaking News', 3, N'500x400', 1)
+GO
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (3, N'Home Latest News ', 3, N'550x360', 1)
+GO
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (4, N'Home News ', 20, N'112x90', 1)
+GO
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (5, N'Trading News', 5, N'500x400', 1)
+ 
 SET IDENTITY_INSERT [dbo].[MasterNewsSection] OFF
 
 GO

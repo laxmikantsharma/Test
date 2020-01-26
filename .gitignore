@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /ANBCNews.UI/src/assets/images/news
+/ANBCNews.API/images
