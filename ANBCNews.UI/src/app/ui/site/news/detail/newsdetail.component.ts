@@ -10,7 +10,7 @@ import { AppConfig } from '../../../../@core/globals/app.config';
 })
 export class NewsDetailComponent {
     newsDetail: any = {};
-    newsId: any;
+    newsId: any; 
     constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router, private config: AppConfig) { }
     ngOnInit() {
         this.route.paramMap.subscribe(params => {

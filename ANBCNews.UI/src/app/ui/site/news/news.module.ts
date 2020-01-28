@@ -8,7 +8,12 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { TradingNewsComponent } from './Trading/trading.news.component';
+import { TradingNewsComponent } from './Trading/trading.news.component'; 
+import { VgCoreModule } from 'videogular2/compiled/core';
+import { VgControlsModule } from 'videogular2/compiled/controls';
+import { VgOverlayPlayModule } from 'videogular2/compiled/overlay-play';
+import { VgBufferingModule } from 'videogular2/compiled/buffering';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
     declarations: [NewsDetailComponent, IndexComponent, Safe, SearchComponent, TradingNewsComponent],
@@ -18,7 +23,12 @@ import { TradingNewsComponent } from './Trading/trading.news.component';
       FormsModule,
       ReactiveFormsModule,
       NgxPaginationModule,
-      InfiniteScrollModule
+      InfiniteScrollModule,
+      VgCoreModule,
+      VgControlsModule,
+      VgOverlayPlayModule,
+      VgBufferingModule,
+      NgxYoutubePlayerModule.forRoot()
   ]
 })
 export class NewsModule { }

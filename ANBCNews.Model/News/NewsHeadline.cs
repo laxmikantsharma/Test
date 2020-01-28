@@ -32,7 +32,8 @@ namespace ANBCNews.Model.News
             set { _strPublishedDate = value; }
         }
         public int TotalRecored { get; set; }
-
+        public bool IsVideo { get; set; }
+        public string VideoTime { get; set; }
     }
     public class NewsParam
     {
@@ -40,5 +41,6 @@ namespace ANBCNews.Model.News
         public int PageNo { get; set; }
         public int SectionID { get; set; }
         public int NewsTypeID { get; set; }
+        public bool OnlyVideo { get; set; }
     }
 }

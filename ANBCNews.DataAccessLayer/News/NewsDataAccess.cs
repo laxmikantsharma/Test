@@ -44,6 +44,7 @@ namespace ANBCNews.DataAccessLayer.News
                 DynamicParameters objParameter = new DynamicParameters();
                 objParameter.Add("@NewsTypeID", objNewsParam.NewsTypeID);
                 objParameter.Add("@SectionID", objNewsParam.SectionID);
+                objParameter.Add("@OnlyVideo", objNewsParam.OnlyVideo);
                 objParameter.Add("@PageNo", objNewsParam.PageNo);
                 return SqlData.dataContext.Query<NewsHeadline>("[GetNewsHeadlines]", objParameter, commandType: CommandType.StoredProcedure);
             }

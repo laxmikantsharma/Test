@@ -11,12 +11,17 @@ SELECT	NH.[NewsID]
 		  ,NH.[PublishedDate]
 		  ,NH.[PageUrl]
 		  ,MIT.NewsType
-		    ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/image/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
+		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/image/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
 		  ,NC.MainContent 
+		  ,NH.IsVideo
+		  ,NV.[Time] AS VideoTime
+		  ,NV.[Type] AS VideoType
+		  ,NV.Url AS VideoUrl
 	  FROM [dbo].[NewsHeader] NH 
 	  INNER JOIN [dbo].[MasterNewsType] MIT  ON NH.[NewsTypeID]=MIT.ID
 	  LEFT JOIN [dbo].NewsImage NI  ON NI.[NewsID]=NH.[NewsID]
 	  LEFT JOIN [dbo].NewsContent NC  ON NC.[NewsID]=NH.[NewsID]
+	  LEFT JOIN [dbo].NewsVideo NV  ON NV.[NewsID]=NH.[NewsID]
 	  WHERE 
 	  NH.NewsID=@NewsID  
 	  AND  NH.IsPublished=1 

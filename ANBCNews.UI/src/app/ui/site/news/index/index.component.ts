@@ -13,7 +13,8 @@ export class IndexComponent implements OnInit {
     pageNo: any = 1;
     private PostResponce: any = [];
     newsType: string
-    newsTypeID: any
+    onlyVideos: boolean=false
+    newsTypeID: any =0
     pageTitle: any
 
     constructor(private newsService: NewsService, private route: ActivatedRoute, private appConfig: AppConfig) { }
@@ -37,23 +38,20 @@ export class IndexComponent implements OnInit {
             } else if (this.newsType == "crime") {
                 this.newsTypeID = 6;
                 this.pageTitle = "क्राइम";
+            } else if (this.newsType == "videos") {
+                this.onlyVideos = true;
+                this.pageTitle = "वीडियो";
+            } else {
+                this.pageTitle = "न्यूज़";
             }
         });
-        this.pageLoad();
+        this.GetNewsByType();
     }
-
-    private pageLoad() {
-        if (this.newsTypeID>0) { 
-            this.GetNewsByType();
-        } else {
-            this.pageTitle = "न्यूज़";
-            this.GetAllLatestNews();
-        }
-    }
+     
 
     private GetNewsByType() {
         if (this.reCall) {
-            this.newsService.GetNewsByType(this.newsTypeID, this.pageNo).subscribe(res => {
+            this.newsService.GetNewsByType(this.newsTypeID, this.onlyVideos, this.pageNo).subscribe(res => {
                 this.PostResponce = res != null ? res : [];
                 this.lstNews = this.lstNews.concat(this.PostResponce);
                 this.reCall = this.PostResponce.length > 9;
@@ -61,18 +59,10 @@ export class IndexComponent implements OnInit {
         }
     }
 
-    private GetAllLatestNews() {
-        if (this.reCall) {
-            this.newsService.GetAllLatestNews(this.pageNo).subscribe(res => {
-                this.PostResponce = res != null ? res : [];
-                this.lstNews = this.lstNews.concat(this.PostResponce);
-                this.reCall = this.PostResponce.length > 9;
-            });
-        }
-    }
+    
 
     onScrollDown() {
         this.pageNo = this.pageNo + 1;
-        this.pageLoad();
+        this.GetNewsByType();
     }
 }

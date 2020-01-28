@@ -35,14 +35,14 @@ namespace ANBCNews.API.Controllers
             NewsParam objNewsParam =  new NewsParam { PageNo = PageNo };
             return obj.GetNewsHeadlines(objNewsParam);
         }
-        [HttpGet("NewsByType/{NewsTypeID}/{PageNo}")]
-        public IEnumerable<NewsHeadline> NewsByType(int NewsTypeID, int PageNo)
+        [HttpGet("NewsByType/{NewsTypeID}/{OnlyVideo}/{PageNo}")]
+        public IEnumerable<NewsHeadline> NewsByType(int NewsTypeID,bool OnlyVideo, int PageNo)
         {
             NewsDetails obj = new NewsDetails();
-            NewsParam objNewsParam =  new NewsParam { PageNo = PageNo,NewsTypeID = NewsTypeID };
+            NewsParam objNewsParam =  new NewsParam { PageNo = PageNo, OnlyVideo = OnlyVideo, NewsTypeID = NewsTypeID };
             return obj.GetNewsHeadlines(objNewsParam);
         }
-
+         
         [HttpGet("Search/{PageNo}/{Keyword}")]
         public IEnumerable<NewsHeadline> SearchNews(int PageNo,string Keyword)
         {

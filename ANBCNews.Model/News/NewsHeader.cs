@@ -33,6 +33,15 @@ namespace ANBCNews.Model.News
 
         public bool? IsPublished { get; set; }  
         public UserInfo objUserInfo { get; set; }
+        public bool IsVideo { get; set; }
+        public string VideoType { get; set; }
+        public string VideoTime { get; set; }
+        private string _VideoUrl = "";
+        public string VideoUrl
+        {
+            get { return this._VideoUrl; }
+            set { this._VideoUrl = (!string.IsNullOrEmpty(value) && VideoType== "ABNC" ? ConfigurationSetting.VideoWebUrl + "/video/" + NewsID +"/"+ value : value); }
+        }
 
     }
 

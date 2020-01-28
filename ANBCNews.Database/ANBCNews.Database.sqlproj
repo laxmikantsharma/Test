@@ -67,15 +67,20 @@
     <PostDeploy Include="Deployment\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\MasterImageType.sql" />
+    <None Include="ANBCNews.Database.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\NewsVideo.sql" />
     <Build Include="dbo\Tables\NewsHeader.sql" />
     <Build Include="dbo\Tables\MasterNewsType.sql" />
     <Build Include="dbo\Tables\NewsSection.sql" />
-    <Build Include="dbo\Tables\MasterNewsSection.sql" />
     <Build Include="dbo\Tables\NewsImage.sql" />
     <Build Include="dbo\Tables\NewsContent.sql" />
     <Build Include="dbo\Tables\Comment.sql" />
     <Build Include="dbo\Tables\UserInfo.sql" />
+    <Build Include="dbo\Tables\MasterImageType.sql" />
+    <Build Include="dbo\Tables\Contact.sql" />
+    <Build Include="dbo\Tables\MasterNewsSection.sql" />
     <Build Include="dbo\Stored Procedures\GenerateClass.sql" />
     <Build Include="dbo\Stored Procedures\GetAllNewsType.sql" />
     <Build Include="dbo\Stored Procedures\GetAllImageType.sql" />
@@ -83,10 +88,6 @@
     <Build Include="dbo\Stored Procedures\GetNewsHeadlines.sql" />
     <Build Include="dbo\Stored Procedures\SaveComment.sql" />
     <Build Include="dbo\Stored Procedures\SearchNews.sql" />
-    <Build Include="dbo\Tables\Contact.sql" />
     <Build Include="dbo\Stored Procedures\SaveContact.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ANBCNews.Database.publish.xml" />
   </ItemGroup>
 </Project>

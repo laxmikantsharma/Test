@@ -5,23 +5,56 @@
       <span class="anbcnews-category">
         <a href="#"> {{newsDetail.newsType}}</a>
       </span>
-      <span class="anbcnews-date">{{newsDetail.strPublishedDate}}</span> 
+      <span class="anbcnews-date">{{newsDetail.strPublishedDate}}</span>
       <!--<span><img width="80" src="{{newsDetail?.objUserInfo?.profileImage}}"></span>
-  <span><a href="#" title="Posts by {{newsDetail?.objUserInfo?.fullName}}" rel="author">{{newsDetail?.objUserInfo?.fullName}} </a></span><br />
-  <span class="profilename profileMail"> <a href="{{newsDetail?.objUserInfo?.email}}"> {{newsDetail?.objUserInfo?.email}}  </a>  </span><br />
-  <span class="anbcnews-date"> <i class="fa fa-clock-o"></i> {{newsDetail.strPublishedDate}} </span>-->
+      <span><a href="#" title="Posts by {{newsDetail?.objUserInfo?.fullName}}" rel="author">{{newsDetail?.objUserInfo?.fullName}} </a></span><br />
+      <span class="profilename profileMail"> <a href="{{newsDetail?.objUserInfo?.email}}"> {{newsDetail?.objUserInfo?.email}}  </a>  </span><br />
+      <span class="anbcnews-date"> <i class="fa fa-clock-o"></i> {{newsDetail.strPublishedDate}} </span>-->
     </div><br />
-    <div *ngIf="newsDetail.imagePath!=''" class="anbcnews-image">
+          <div *ngIf="newsDetail.isVideo">
+            <vg-player *ngIf="newsDetail.videoType=='ABNC'">
+              <vg-overlay-play></vg-overlay-play>
+              <!--<vg-buffering></vg-buffering>-->
+
+              <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+              </vg-scrub-bar>
+
+              <vg-controls>
+                <vg-play-pause></vg-play-pause>
+                <vg-playback-button></vg-playback-button>
+
+                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+
+                <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+                <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+                <vg-track-selector></vg-track-selector>
+                <vg-mute></vg-mute>
+                <vg-volume></vg-volume>
+
+                <vg-fullscreen></vg-fullscreen>
+              </vg-controls>
+              <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
+                <source src="{{newsDetail.videoUrl}}" type="video/mp4">
+              </video>
+            </vg-player> 
+            <youtube-player *ngIf="newsDetail.videoType=='YOUTUBE'" width="750" height="430" [videoId]="newsDetail.videoUrl"  crossorigin > </youtube-player>
+          </div>
+    <div *ngIf="!newsDetail.isVideo && newsDetail.imagePath!=''" class="anbcnews-image">
       <img width="700" src="{{newsDetail.imagePath}}" alt="">
     </div>
-    <article  *ngIf="newsDetail.headline!=null" class="post type-post status-publish format-standard has-post-thumbnail hentry category-events">
+    <article *ngIf="newsDetail.headline!=null" class="post type-post status-publish format-standard has-post-thumbnail hentry category-events">
       <div class="entry-content" [innerHtml]="newsDetail.mainContent | safeHtml: 'html'">
       </div>
-    </article> 
-    <div id='vuukle-comments'></div> 
+    </article>
+    <div id='vuukle-comments'></div>
   </div>
 
-<site-trading-news></site-trading-news>
+  <site-trading-news></site-trading-news>
 
 </div>
 

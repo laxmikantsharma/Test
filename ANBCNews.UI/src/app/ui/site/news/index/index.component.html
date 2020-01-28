@@ -9,6 +9,7 @@
             <div class="anbcnews-image">
               <a [routerLink]="['/news/story/',item.queryParam]">
                 <img width="550" height="360" src="{{item.imagePath}}" class="attachment-anbcnews-recent-post-big size-anbcnews-recent-post-big wp-post-image" alt="">
+                <span *ngIf="item.isVideo" class="playIconThumbContainer"><span class="platDetailVideoTime">{{item.videoTime}}</span></span>
               </a>
             </div>
             <div class="anbcnews-title">

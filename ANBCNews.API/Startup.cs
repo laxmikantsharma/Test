@@ -35,6 +35,7 @@ namespace ANBCNews.API
             }));
             ConfigurationSetting.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
             ConfigurationSetting.ImageWebUrl = Configuration.GetSection("AppSetting").GetSection("ImageWebUrl").Value;
+            ConfigurationSetting.VideoWebUrl = Configuration.GetSection("AppSetting").GetSection("VideoWebUrl").Value;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
