@@ -27,8 +27,19 @@ namespace ANBCNews.DataAccessLayer.News
                 objParameter.Add("@Group", Group);
                 var result = SqlData.dataContext.QueryMultiple("GetNewsDetails", objParameter, commandType: CommandType.StoredProcedure);
                 NewsHeader obj = result.ReadSingle<NewsHeader>();
-                if (obj.NewsID > 0 && Group == "Full")
-                    obj.objUserInfo = result.ReadSingle<UserInfo>();
+
+                if (obj.NewsID > 0)
+                    obj.objNewsContent = result.ReadFirstOrDefault<NewsContent>();
+
+                if (obj.NewsID > 0)
+                    obj.objNewsImage = result.ReadFirstOrDefault<NewsImage>();
+
+                if (obj.NewsID > 0)
+                    obj.objNewsVideo = result.ReadFirstOrDefault<NewsVideo>();
+
+              //  if (obj.NewsID > 0 && Group == "Full")
+                //    obj.objUserInfo = result.ReadFirstOrDefault<UserInfo>();
+
                 return obj;
             }
             catch (Exception ex)

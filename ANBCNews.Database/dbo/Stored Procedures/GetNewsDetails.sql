@@ -10,23 +10,46 @@ SELECT	NH.[NewsID]
 		  ,NH.[NewsTypeID]
 		  ,NH.[PublishedDate]
 		  ,NH.[PageUrl]
-		  ,MIT.NewsType
-		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/image/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
-		  ,NC.MainContent 
-		  ,NH.IsVideo
-		  ,NV.[Time] AS VideoTime
-		  ,NV.[Type] AS VideoType
-		  ,NV.Url AS VideoUrl
+		  ,MIT.NewsType 
+		  ,NH.IsVideo 
 	  FROM [dbo].[NewsHeader] NH 
-	  INNER JOIN [dbo].[MasterNewsType] MIT  ON NH.[NewsTypeID]=MIT.ID
-	  LEFT JOIN [dbo].NewsImage NI  ON NI.[NewsID]=NH.[NewsID]
-	  LEFT JOIN [dbo].NewsContent NC  ON NC.[NewsID]=NH.[NewsID]
-	  LEFT JOIN [dbo].NewsVideo NV  ON NV.[NewsID]=NH.[NewsID]
+	  INNER JOIN [dbo].[MasterNewsType] MIT  ON NH.[NewsTypeID]=MIT.ID 
 	  WHERE 
 	  NH.NewsID=@NewsID  
 	  AND  NH.IsPublished=1 
 	  ORDER BY NH.PublishedDate DESC
 	
+	SELECT	NH.[NewsID] 
+		  ,NC.ContentID  
+		  ,NC.MainContent  
+		  ,NC.SubContent  
+	  FROM [dbo].[NewsHeader] NH  
+	    JOIN [dbo].NewsContent NC  ON NC.[NewsID]=NH.[NewsID] 
+	  WHERE 
+	  NH.NewsID=@NewsID  
+	  AND  NH.IsPublished=1 
+	
+	SELECT	NH.[NewsID]
+		  ,NI.ImageID
+		  ,NI.Name
+		  ,CASE WHEN ISNULL(NI.Name,'')!='' THEN '/image/'+CAST(NH.[NewsID] AS Varchar(10))+'/'+NI.Name ELSE '' END  ImagePath
+	  FROM [dbo].[NewsHeader] NH  
+	    JOIN [dbo].NewsImage NI  ON NI.[NewsID]=NH.[NewsID] 
+	  WHERE 
+	  NH.NewsID=@NewsID  
+	  AND  NH.IsPublished=1   
+	
+	SELECT	NH.[NewsID] 
+		  ,NV.VideoID  
+		  ,NV.Name  
+		  ,NV.Time    
+		  ,NV.Type  
+	  FROM [dbo].[NewsHeader] NH  
+	    JOIN [dbo].NewsVideo NV  ON NV.[NewsID]=NH.[NewsID]
+	  WHERE 
+	  NH.NewsID=@NewsID  
+	  AND  NH.IsPublished=1 
+
 	IF(@Group='Full')
 	  SELECT UI.FirstName,UI.LastName,UI.Email,UI.ProfileImage 
 	   ,CASE WHEN ISNULL(UI.ProfileImage,'')!='' THEN '/assets/images/user/'+CAST(UI.UserID AS Varchar(10))+'/'+UI.ProfileImage ELSE '' END  ProfileImage
