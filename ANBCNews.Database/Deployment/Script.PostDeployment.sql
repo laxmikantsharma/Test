@@ -30,7 +30,7 @@ INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection]
 GO
 INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (4, N'Home News ', 20, N'112x90', 1)
 GO
-INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (5, N'Trading News', 5, N'500x400', 1)
+INSERT [dbo].[MasterNewsSection] ([SectionID], [NewsSection], [MaxNewsInSection], [ImageSize], [IsActive]) VALUES (5, N'Trading News', 5, N'320x190', 1)
  
 SET IDENTITY_INSERT [dbo].[MasterNewsSection] OFF
 
