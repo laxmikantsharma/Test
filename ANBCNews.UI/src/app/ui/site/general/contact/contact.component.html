@@ -1,20 +1,15 @@
-<div class="row">
+<div class="row" id="gray-container">
   <h1 class="entry-title">Contact Us</h1>
+  <h3> <span>{{DBResponce.message}}</span></h3>
   <div class="col-md-6 col-xs-6">
-    <form id="formid" (ngSubmit)="SavContact()" [formGroup]="contactForm">
-      <span>{{DBResponce.message}}</span> 
+    <form id="formid" (ngSubmit)="SavContact()" [formGroup]="contactForm"> 
       <div class="row">
-        <label for="name">Name</label>
-        <input name="name" formControlName="Name" type="text" placeholder="Name*" value="" size="30" aria-required="true" class="form-control">
-        <label for="name">Email Address</label>
-        <input formControlName="Email" name="email" type="text" placeholder="Email*" value="" size="30" aria-required="true" class="form-control">
-        <label for="name">Your Message</label>
-        <textarea name="message" rows="8" formControlName="Message" required aria-required="true" class="form-control"></textarea>
-       
-          <input type="submit" [disabled]="!contactForm.valid" value="Send the message" >
-        
+        <input name="name" formControlName="Name" type="text" placeholder="Name*" value="" size="30" aria-required="true">
+        <input formControlName="Email" name="email" type="text" placeholder="Email*" value="" size="30" aria-required="true">
+        <textarea name="message" rows="8" formControlName="Message" placeholder="Your Message*" required aria-required="true"></textarea>
+        <input type="submit" [disabled]="!contactForm.valid" value="Send the message">
       </div>
-     
+
     </form>
   </div>
   <div class="col-md-6 col-xs-6">
