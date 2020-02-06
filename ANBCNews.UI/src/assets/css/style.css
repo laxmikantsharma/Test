@@ -3261,3 +3261,9 @@ input[type=password], input[type=submit], input[type=text], textarea {
 input[type=submit] {
   color: #fff !important;
 }
+.tradingnews {
+  font-size: 18px !important;
+  background: #0a396d !important;
+  color: #fff !important;
+  padding: 13px !important;
+}
