@@ -11,10 +11,10 @@ namespace ANBCNews.DataAccessLayer.Comment
 {
     public class ContactDataAccess 
     {
-        SqlDataAccess SqlData = null;
+        MySqlDataAccess SqlData = null;
         public ContactDataAccess()
         {
-            SqlData = new SqlDataAccess(); 
+            SqlData = new MySqlDataAccess(); 
         }
 
         public DBResponse SaveContact(ContactEntity objComment)
@@ -22,9 +22,9 @@ namespace ANBCNews.DataAccessLayer.Comment
             DynamicParameters objParameter = new DynamicParameters();
             try
             {
-                objParameter.Add("@Name", objComment.Name);
-                objParameter.Add("@Email", objComment.Email); 
-                objParameter.Add("@Message", objComment.Message);
+                objParameter.Add("p_Name", objComment.Name);
+                objParameter.Add("p_Email", objComment.Email); 
+                objParameter.Add("p_Message", objComment.Message);
                 return SqlData.dataContext.QueryFirstOrDefault<DBResponse>("SaveContact", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)

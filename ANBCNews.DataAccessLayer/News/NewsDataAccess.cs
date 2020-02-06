@@ -12,10 +12,10 @@ namespace ANBCNews.DataAccessLayer.News
 {
     public class NewsDataAccess
     {
-        SqlDataAccess SqlData = null;
+        MySqlDataAccess SqlData = null;
         public NewsDataAccess()
         {
-            SqlData = new SqlDataAccess();
+            SqlData = new MySqlDataAccess();
         }
 
         public NewsHeader GetNewsDetail(long NewsID, string Group = "Full")
@@ -23,8 +23,8 @@ namespace ANBCNews.DataAccessLayer.News
             try
             {
                 DynamicParameters objParameter = new DynamicParameters();
-                objParameter.Add("@NewsID", NewsID);
-                objParameter.Add("@Group", Group);
+                objParameter.Add("p_NewsID", NewsID);
+                objParameter.Add("p_Group", Group);
                 var result = SqlData.dataContext.QueryMultiple("GetNewsDetails", objParameter, commandType: CommandType.StoredProcedure);
                 NewsHeader obj = result.ReadSingle<NewsHeader>();
 
@@ -53,11 +53,11 @@ namespace ANBCNews.DataAccessLayer.News
             try
             {
                 DynamicParameters objParameter = new DynamicParameters();
-                objParameter.Add("@NewsTypeID", objNewsParam.NewsTypeID);
-                objParameter.Add("@SectionID", objNewsParam.SectionID);
-                objParameter.Add("@OnlyVideo", objNewsParam.OnlyVideo);
-                objParameter.Add("@PageNo", objNewsParam.PageNo);
-                return SqlData.dataContext.Query<NewsHeadline>("[GetNewsHeadlines]", objParameter, commandType: CommandType.StoredProcedure);
+                objParameter.Add("p_NewsTypeID", objNewsParam.NewsTypeID);
+                objParameter.Add("p_SectionID", objNewsParam.SectionID);
+                objParameter.Add("p_OnlyVideo", objNewsParam.OnlyVideo);
+                objParameter.Add("p_PageNo", objNewsParam.PageNo);
+                return SqlData.dataContext.Query<NewsHeadline>("GetNewsHeadlines", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)
             {
@@ -70,10 +70,10 @@ namespace ANBCNews.DataAccessLayer.News
             try
             {
                 DynamicParameters objParameter = new DynamicParameters();
-                objParameter.Add("@Keyword", Keyword);
-                objParameter.Add("@PageNo", PageNo);
+                objParameter.Add("p_Keyword", Keyword);
+                objParameter.Add("p_PageNo", PageNo);
                 
-                return SqlData.dataContext.Query<NewsHeadline>("[SearchNews]", objParameter, commandType: CommandType.StoredProcedure);
+                return SqlData.dataContext.Query<NewsHeadline>("SearchNews", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)
             {

@@ -11,10 +11,10 @@ namespace ANBCNews.DataAccessLayer.Comment
 {
     public class CommentDataAccess 
     {
-        SqlDataAccess SqlData = null;
+        MySqlDataAccess SqlData = null;
         public CommentDataAccess()
         {
-            SqlData = new SqlDataAccess(); 
+            SqlData = new MySqlDataAccess(); 
         }
 
         public DBResponse SaveComment(CommentEntity objComment)
@@ -22,10 +22,10 @@ namespace ANBCNews.DataAccessLayer.Comment
             DynamicParameters objParameter = new DynamicParameters();
             try
             {
-                objParameter.Add("@Name", objComment.Name);
-                objParameter.Add("@Email", objComment.Email);
-                objParameter.Add("@Subject", objComment.Subject);
-                objParameter.Add("@Message", objComment.Message);
+                objParameter.Add("p_Name", objComment.Name);
+                objParameter.Add("p_Email", objComment.Email);
+                objParameter.Add("p_Subject", objComment.Subject);
+                objParameter.Add("p_Message", objComment.Message);
                 return SqlData.dataContext.QueryFirstOrDefault<DBResponse>("SaveComment", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)

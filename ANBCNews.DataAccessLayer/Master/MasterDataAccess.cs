@@ -10,10 +10,10 @@ namespace ANBCNews.DataAccessLayer.Master
 {
     public class CommentAccess 
     {
-        SqlDataAccess SqlData = null;
+        MySqlDataAccess SqlData = null;
         public CommentAccess()
         {
-            SqlData = new SqlDataAccess(); 
+            SqlData = new MySqlDataAccess(); 
         }
 
         public IEnumerable<MasterImageType> GetImageType()

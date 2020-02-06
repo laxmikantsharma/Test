@@ -30,10 +30,10 @@ namespace ANBCNews.DataAccessLayer.Config
                 objDBLogger.Message = log + (exception != null ? "\n\n exception:" + exception.ToString() : "");
                 objDBLogger.Type = logLevel;
                 objDBLogger.Source = projectSource;
-                objParameter.Add("@ID", objDBLogger.ExceptionID);
-                objParameter.Add("@Message", objDBLogger.Message);
-                objParameter.Add("@Type", objDBLogger.Type);
-                objParameter.Add("@Source", objDBLogger.Source);
+                objParameter.Add("p_ID", objDBLogger.ExceptionID);
+                objParameter.Add("p_Message", objDBLogger.Message);
+                objParameter.Add("p_Type", objDBLogger.Type);
+                objParameter.Add("p_Source", objDBLogger.Source);
                  SqlData.dataContext.QuerySingle<DBResponse>("USP_INSERT_EXCEPTIONLOG", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch
