@@ -18,6 +18,7 @@ namespace ANBCNews.Model.News
             set { this._ImagePath = (!string.IsNullOrEmpty(value) ? ConfigurationSetting.ImageWebUrl+ value : "");}
         }
         public string PageUrl { get; set; }
+        public string TypeUrl { get; set; }
         public string QueryParam
         {
             get { return (!string.IsNullOrEmpty(PageUrl) ? PageUrl.Replace(" ", "-").ToLower() + "-" + NewsID.ToString() : NewsID.ToString()); }

@@ -16,7 +16,7 @@
               </h4>
             </div>
             <span class="anbcnews-category">
-              <a href="#">{{item.newsType}}</a>
+              <a [routerLink]="['/news/',item.typeUrl]">{{item.newsType}}</a>
             </span>
             <span class="anbcnews-date">{{item.strPublishedDate}}</span>
             <div class="anbcnews-content">

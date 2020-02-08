@@ -3,7 +3,7 @@
     <h2>{{newsDetail.headline}}</h2>
     <div class="anbcnews-post-meta">
       <span class="anbcnews-category">
-        <a href="#"> {{newsDetail.newsType}}</a>
+        <a [routerLink]="['/news/',newsDetail.typeUrl]"> {{newsDetail.newsType}}</a>
       </span>
       <span class="anbcnews-date">{{newsDetail.strPublishedDate}}</span>
       <!--<span><img width="80" src="{{newsDetail?.objUserInfo?.profileImage}}"></span>
