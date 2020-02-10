@@ -32,9 +32,9 @@ export class ContactComponent {
 
     this.contactService.SaveComment(this.ContactDetails).subscribe(res => {
       this.DBResponce = res;
-      this.contactForm.reset();
-      if (this.DBResponce != null && this.DBResponce.responseResult) {
-      }
+        if (this.DBResponce != null && this.DBResponce.responseResult) {
+            this.contactForm.reset();
+        }
     });
   }
 }

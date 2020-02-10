@@ -1,24 +1,29 @@
 <div class="row" id="gray-container">
-  <h1 class="entry-title">Contact Us</h1>
-  <h3> <span>{{DBResponce.message}}</span></h3>
-  <div class="col-md-6 col-xs-6">
-    <form id="formid" (ngSubmit)="SavContact()" [formGroup]="contactForm"> 
-      <div class="row">
-        <input name="name" formControlName="Name" type="text" placeholder="Name*" value="" size="30" aria-required="true">
-        <input formControlName="Email" name="email" type="text" placeholder="Email*" value="" size="30" aria-required="true">
-        <textarea name="message" rows="8" formControlName="Message" placeholder="Your Message*" required aria-required="true"></textarea>
-        <input type="submit" [disabled]="!contactForm.valid" value="Send the message">
+  <img style="width:100%" src="/assets/images/contact-us.jpg" />
+  <div class=" col-md-12 anbcnews-content anbcnews-with-sidebar">
+    <div class="widget anbc_news_widgets">
+      <h3 class="widget-title"><span>Contact Us</span></h3>
+      <h3> <span>{{DBResponce.message}}</span></h3>
+      <div class="col-md-6 col-xs-6">
+        <form id="formid" (ngSubmit)="SavContact()" [formGroup]="contactForm">
+          <div class="row">
+            <input name="name" formControlName="Name" type="text" placeholder="Name*" value="" size="30" aria-required="true">
+            <input formControlName="Email" name="email" type="text" placeholder="Email*" value="" size="30" aria-required="true">
+            <textarea name="message" rows="8" formControlName="Message" placeholder="Your Message*" required aria-required="true"></textarea>
+            <input type="submit" [disabled]="!contactForm.valid" value="Send">
+          </div>
+
+        </form>
       </div>
+      <div class="col-md-6 col-xs-6">
+        <p class="text" align="justify">
+          Ace aspire<br>
+          Noida extension, 201305<br>
+          ANBC से जुड़ने के लिए <a href="mailto:asianewsbroadcastingcompany@gmail.com" class="lniks">asianewsbroadcastingcompany@gmail.com</a> पर cv सेंड करें।,
 
-    </form>
-  </div>
-  <div class="col-md-6 col-xs-6">
-    <p class="text" align="justify">
-      Ace aspire<br>
-      Noida extension, 201305<br>
-      ANBC से जुड़ने के लिए <a href="mailto:asianewsbroadcastingcompany@gmail.com" class="lniks">asianewsbroadcastingcompany@gmail.com</a> पर cv सेंड करें।,
-
-    </p>
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
