@@ -12,6 +12,7 @@ namespace ANBCNews.Model.News
         public string Headline { get; set; }
         public long? NewsTypeID { get; set; }
         public string NewsType { get; set; }
+        public string TypeUrl { get; set; }
         public DateTime PublishedDate { get; set; }
         private string _strPublishedDate;
         public string strPublishedDate

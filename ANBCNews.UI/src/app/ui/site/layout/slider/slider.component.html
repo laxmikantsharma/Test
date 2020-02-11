@@ -8,7 +8,7 @@
             <h1 *ngIf="i==0">  <a [routerLink]="['/news/story/',item.queryParam]"> {{item.headline}}</a> </h1>
             <h4 *ngIf="i!=0"> <a [routerLink]="['/news/story/',item.queryParam]">{{item.headline}}</a> </h4>
             <span class="anbcnews-category">
-              <a href="#"> {{item.newsType}}</a>
+              <a [routerLink]="['/news/',item.typeUrl]"> {{item.newsType}}</a>
             </span>
             <span class="anbcnews-date">{{item.strPublishedDate}}</span>
           </div>
