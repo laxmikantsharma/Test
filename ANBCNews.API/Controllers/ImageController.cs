@@ -26,6 +26,8 @@ namespace ANBCNews.API.Controllers
         [HttpGet("{NewsID}/{Size}/{ImageName}")] 
         public async Task<IActionResult> Get(string NewsID, string Size, string ImageName)
         {
+            string str = "";
+            bool isSeek = false;
             var req = new ThumbnailRequest();
             //req.RequestedPath = ImageName;
             req.ThumbnailSize = ParseSize(Size);
@@ -34,22 +36,37 @@ namespace ANBCNews.API.Controllers
             {
                 using (Image img = Image.FromFile(req.SourceImagePath))
                 {
+                    try
+                    {
+
+                    
                     Image file = null;
-
-                    if (req.ThumbnailSize.Value.Height >= req.ThumbnailSize.Value.Width)
+                        str = "Width: " + req.ThumbnailSize.Value.Width + " Height: " + req.ThumbnailSize.Value.Height;
+                       
+                        if (req.ThumbnailSize.Value.Height >= req.ThumbnailSize.Value.Width)
                       file = ImageResize.ScaleByHeight(img, req.ThumbnailSize.Value.Height);
+                        str = "2 Width: " + req.ThumbnailSize.Value.Width + " Height: " + req.ThumbnailSize.Value.Height;
 
-                    if (req.ThumbnailSize.Value.Width > req.ThumbnailSize.Value.Height)
+                        if (req.ThumbnailSize.Value.Width > req.ThumbnailSize.Value.Height)
                         file = ImageResize.ScaleByWidth(img, req.ThumbnailSize.Value.Width);
+                        str = "3 Width: " + req.ThumbnailSize.Value.Width + " Height: " + req.ThumbnailSize.Value.Height;
+                   
+                        file = ImageResize.ScaleAndCrop(file, req.ThumbnailSize.Value.Width, req.ThumbnailSize.Value.Height, TargetSpot.Center);
+                        str = "4 Width: " + req.ThumbnailSize.Value.Width + " Height: " + req.ThumbnailSize.Value.Height;
 
-                    file = ImageResize.ScaleAndCrop(file, req.ThumbnailSize.Value.Width, req.ThumbnailSize.Value.Height, TargetSpot.Center);
-
-                    Stream outputStream = new MemoryStream();
+                        Stream outputStream = new MemoryStream();
 
                     file.Save(outputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
                     outputStream.Seek(0, SeekOrigin.Begin);
+                        str = "5 Width: " + req.ThumbnailSize.Value.Width + " Height: " + req.ThumbnailSize.Value.Height;
 
-                    return this.File(outputStream, "image/png");
+                        return this.File(outputStream, "image/png");
+                    }
+                    catch (Exception ex)
+                    {
+                        return NotFound(str+" "+ex.Message + " inner " + Convert.ToString( ex.InnerException));
+
+                    }
                 }
             }
             return NotFound();

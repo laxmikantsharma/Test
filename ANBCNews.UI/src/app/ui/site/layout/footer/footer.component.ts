@@ -6,6 +6,6 @@ import { AppConfig } from '../../../../@core/globals/app.config';
     templateUrl: './footer.component.html',
 })
 export class FooterComponent {
-    constructor(private config: AppConfig) { }
+    constructor(public config: AppConfig) { }
    
 }

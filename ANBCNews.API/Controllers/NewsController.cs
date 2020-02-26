@@ -6,6 +6,8 @@ using ANBCNews.BusinessLayer.News;
 using ANBCNews.Model.News;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using ANBCNews.Model;
 
 namespace ANBCNews.API.Controllers
 {
@@ -13,6 +15,38 @@ namespace ANBCNews.API.Controllers
     [Route("[controller]")]
     public class NewsController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+
+        public NewsController( IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        //[HttpGet]
+        //public string Get()
+        //{
+        //    try
+        //    {
+        //        ConfigurationSetting.ConnectionString = _configuration.GetConnectionString("DefaultConnection");
+        //        ConfigurationSetting.ImageWebUrl = _configuration.GetSection("AppSetting").GetSection("ImageWebUrl").Value;
+        //        string str = _configuration.GetSection("ASPNETCORE_ENVIRONMENT").Value;
+
+        //        ConfigurationSetting.ConnectionString = ConfigurationSetting.ConnectionString == null ? "ConnectionString Null" : ConfigurationSetting.ConnectionString;
+
+        //        ConfigurationSetting.ImageWebUrl = _configuration.GetSection("AppSetting") == null ? "AppSetting Null" : _configuration.GetSection("AppSetting").GetSection("ImageWebUrl") == null ? "ImageWebUrl Null" : _configuration.GetSection("AppSetting").GetSection("ImageWebUrl").Value;
+
+        //        NewsHeader obj = null;
+        //        obj = new NewsDetails().GetNewsDetail(1);
+
+        //       return ConfigurationSetting.ConnectionString + " 2. " + ConfigurationSetting.ImageWebUrl + "3. " + obj.Headline; // here  
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return ConfigurationSetting.ConnectionString + " 2. " + ConfigurationSetting.ImageWebUrl + "3. " + ex.Message; // here  
+        //    }
+        //}
+
         [HttpGet("Detail/{NewsID}")]
         public NewsHeader GetNewsDetail(int NewsID)
         {

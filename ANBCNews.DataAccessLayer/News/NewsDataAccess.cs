@@ -44,7 +44,8 @@ namespace ANBCNews.DataAccessLayer.News
             }
             catch (Exception ex)
             {
-                CLogger.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in News Data Access while calling GetNewsDetail Action, Ex.: " + ex.Message);
+                throw ex;
+                CLoggerDataAccess.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in News Data Access while calling GetNewsDetail Action, Ex.: " + ex.Message);
             }
             return null;
         }
@@ -61,7 +62,7 @@ namespace ANBCNews.DataAccessLayer.News
             }
             catch (Exception ex)
             {
-                CLogger.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in News Data Access  while calling GetNewsHeadlines Action, Ex.: " + ex.Message);
+                CLoggerDataAccess.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in News Data Access  while calling GetNewsHeadlines Action, Ex.: " + ex.Message);
             }
             return null;
         }
@@ -77,7 +78,7 @@ namespace ANBCNews.DataAccessLayer.News
             }
             catch (Exception ex)
             {
-                CLogger.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in News Data Access  while calling SearchNews Action, Ex.: " + ex.Message);
+                CLoggerDataAccess.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in News Data Access  while calling SearchNews Action, Ex.: " + ex.Message);
             }
             return null;
         }

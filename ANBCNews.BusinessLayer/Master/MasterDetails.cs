@@ -10,13 +10,13 @@ namespace ANBCNews.BusinessLayer.Master
 
         public IEnumerable<MasterImageType> GetImageType()
         {
-            CommentAccess objDataAccess = new CommentAccess();
+            MasterDataAccess objDataAccess = new MasterDataAccess();
             return objDataAccess.GetImageType();
         }
 
         public IEnumerable<MasterNewsType> GetNewsType()
         {
-            CommentAccess objDataAccess = new CommentAccess();
+            MasterDataAccess objDataAccess = new MasterDataAccess();
             return objDataAccess.GetNewsType();
         }
 

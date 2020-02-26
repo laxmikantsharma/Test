@@ -18,21 +18,21 @@ namespace ANBCNews.API.Controllers
         [HttpPost()]
         public ActionResult SaveContact([FromBody]ContactEntity objContact)
         {
-            DBResponse obj = new DBResponse();
+            Response obj = new Response();
             if (ModelState.IsValid)
             {
                 ContactDetails objContactDetails = new ContactDetails();
                 obj = objContactDetails.SaveContact(objContact);
-                obj.ResponseResult = obj.ID > 0;
-                obj.Message = obj.ResponseResult ? "Thanks for your query. We will contact you soon." : AppMessage.SystemError;
+                obj.Result = obj.ID > 0;
+                obj.Message = obj.Result ? "Thanks for your query. We will contact you soon." : AppMessage.SystemError;
 
             }
             else
             {
-                obj.ResponseResult = false;
+                obj.Result = false;
                 obj.Message = "Please fill in all required fields";
             }
-            return Ok(new { ResponseResult = obj.ResponseResult, Message = obj.Message });
+            return Ok(new { ResponseResult = obj.Result, Message = obj.Message });
         }
     }
 }

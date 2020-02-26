@@ -17,7 +17,7 @@ namespace ANBCNews.DataAccessLayer.Comment
             SqlData = new MySqlDataAccess(); 
         }
 
-        public DBResponse SaveComment(CommentEntity objComment)
+        public Response SaveComment(CommentEntity objComment)
         {
             DynamicParameters objParameter = new DynamicParameters();
             try
@@ -26,13 +26,13 @@ namespace ANBCNews.DataAccessLayer.Comment
                 objParameter.Add("p_Email", objComment.Email);
                 objParameter.Add("p_Subject", objComment.Subject);
                 objParameter.Add("p_Message", objComment.Message);
-                return SqlData.dataContext.QueryFirstOrDefault<DBResponse>("SaveComment", objParameter, commandType: CommandType.StoredProcedure);
+                return SqlData.dataContext.QueryFirstOrDefault<Response>("SaveComment", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)
             {
-                CLogger.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in  Comment Data Access  while calling SaveComment Action, Ex.: " + ex.Message);
+                CLoggerDataAccess.WriteLog(ProjectSource.DataAccessLayer, ELogLevel.ERROR, "ERROR ocurred in  Comment Data Access  while calling SaveComment Action, Ex.: " + ex.Message);
             }
-            return new DBResponse();
+            return new Response();
         }
     }
 }

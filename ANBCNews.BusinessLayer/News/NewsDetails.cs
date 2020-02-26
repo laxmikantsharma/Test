@@ -11,6 +11,7 @@ namespace ANBCNews.BusinessLayer.News
         public NewsHeader GetNewsDetail(long NewsID)
         {
             NewsDataAccess objDataAccess = new NewsDataAccess();
+           
             return objDataAccess.GetNewsDetail(NewsID);
         }
         public IEnumerable<NewsHeadline> GetNewsHeadlines(NewsParam objNewsParam)
