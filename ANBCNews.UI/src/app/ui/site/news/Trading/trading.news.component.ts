@@ -9,6 +9,7 @@ import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angula
 })
 export class TradingNewsComponent implements OnInit {
     lstTradingNews: any = [];
+    apiResponse: any = {};
 
     constructor(private newsService: NewsService, private route: ActivatedRoute) { }
 
@@ -18,7 +19,9 @@ export class TradingNewsComponent implements OnInit {
 
     private GetTradingNews() {
         this.newsService.GetTradingNews().subscribe(res => {
-            this.lstTradingNews = res != null ? res : [];
+            this.apiResponse = res;
+            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+                this.lstTradingNews = this.apiResponse.collection;   
         });
     }
      

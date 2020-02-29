@@ -4,7 +4,7 @@
     <div class="widget anbc_news_widgets">
       <h3 class="widget-title"><span>Contact Us</span></h3>
        <br>
-      <h3> <span>{{DBResponce.message}}</span></h3>
+      <h3> <span>{{apiResponce.statusMessage}}</span></h3>
 
       <div class="col-md-6 col-xs-6">
         <form id="formid" (ngSubmit)="SavContact()" [formGroup]="contactForm">

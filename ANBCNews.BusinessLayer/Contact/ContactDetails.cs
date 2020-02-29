@@ -11,7 +11,7 @@ namespace ANBCNews.BusinessLayer.Master
     public class ContactDetails
     {
 
-        public Response SaveContact(ContactEntity objContact)
+        public DBResponse SaveContact(ContactEntity objContact)
         {
             ContactDataAccess objDataAccess = new ContactDataAccess();
             return objDataAccess.SaveContact(objContact);

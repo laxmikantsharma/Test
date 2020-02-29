@@ -17,7 +17,7 @@ namespace ANBCNews.API.Controllers
     {
         private readonly IConfiguration _configuration;
 
-        public NewsController( IConfiguration configuration)
+        public NewsController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -48,42 +48,102 @@ namespace ANBCNews.API.Controllers
         //}
 
         [HttpGet("Detail/{NewsID}")]
-        public NewsHeader GetNewsDetail(int NewsID)
+        public async Task<APIResponse> GetNewsDetail(int NewsID)
         {
-            NewsDetails obj = new NewsDetails();
-            return obj.GetNewsDetail(NewsID);
+            APIResponse objResponse = new APIResponse();
+            try
+            {
+                NewsDetails obj = new NewsDetails();
+                objResponse.Object = obj.GetNewsDetail(NewsID);
+                objResponse.StatusCode = "200";
+                objResponse.StatusMessage = "API sucussfully processed";
+            }
+            catch (Exception ex)
+            {
+                objResponse.StatusMessage = ex.Message;
+                objResponse.StatusCode = "10501";
+            }
+            return objResponse;
         }
 
         [HttpGet("NewsHeadlines/{SectionID}")]
-        public IEnumerable<NewsHeadline> NewsHeadlines(int SectionID)
+        public async Task<APIResponse> NewsHeadlines(int SectionID)
         {
-            NewsDetails obj = new NewsDetails();
-            NewsParam objNewsParam =  new NewsParam {SectionID= SectionID };
-            return obj.GetNewsHeadlines(objNewsParam);
+            APIResponse objResponse = new APIResponse();
+            try
+            {
+                NewsDetails obj = new NewsDetails();
+                NewsParam objNewsParam = new NewsParam { SectionID = SectionID };
+                objResponse.Collection = obj.GetNewsHeadlines(objNewsParam);
+                objResponse.StatusCode = "200";
+                objResponse.StatusMessage = "API sucussfully processed";
+            }
+            catch (Exception ex)
+            {
+                objResponse.StatusMessage = ex.Message;
+                objResponse.StatusCode = "10501";
+            }
+            return objResponse;
         }
 
         [HttpGet("LatestNews/{PageNo}")]
-        public IEnumerable<NewsHeadline> LatestNews(int PageNo)
+        public async Task<APIResponse> LatestNews(int PageNo)
         {
-            NewsDetails obj = new NewsDetails();
-            NewsParam objNewsParam =  new NewsParam { PageNo = PageNo };
-            return obj.GetNewsHeadlines(objNewsParam);
+            APIResponse objResponse = new APIResponse();
+            try
+            {
+                NewsDetails obj = new NewsDetails();
+                NewsParam objNewsParam = new NewsParam { PageNo = PageNo };
+                objResponse.Collection = obj.GetNewsHeadlines(objNewsParam);
+                objResponse.StatusCode = "200";
+                objResponse.StatusMessage = "API sucussfully processed";
+            }
+            catch (Exception ex)
+            {
+                objResponse.StatusMessage = ex.Message;
+                objResponse.StatusCode = "10501";
+            }
+            return objResponse;
         }
         [HttpGet("NewsByType/{NewsTypeID}/{OnlyVideo}/{PageNo}")]
-        public IEnumerable<NewsHeadline> NewsByType(int NewsTypeID,bool OnlyVideo, int PageNo)
+        public async Task<APIResponse> NewsByType(int NewsTypeID, bool OnlyVideo, int PageNo)
         {
-            NewsDetails obj = new NewsDetails();
-            NewsParam objNewsParam =  new NewsParam { PageNo = PageNo, OnlyVideo = OnlyVideo, NewsTypeID = NewsTypeID };
-            return obj.GetNewsHeadlines(objNewsParam);
+            APIResponse objResponse = new APIResponse();
+            try
+            {
+                NewsDetails obj = new NewsDetails();
+                NewsParam objNewsParam = new NewsParam { PageNo = PageNo, OnlyVideo = OnlyVideo, NewsTypeID = NewsTypeID };
+                objResponse.Collection = obj.GetNewsHeadlines(objNewsParam);
+                objResponse.StatusCode = "200";
+                objResponse.StatusMessage = "API sucussfully processed";
+            }
+            catch (Exception ex)
+            {
+                objResponse.StatusMessage = ex.Message;
+                objResponse.StatusCode = "10501";
+            }
+            return objResponse;
         }
-         
+
         [HttpGet("Search/{PageNo}/{Keyword}")]
-        public IEnumerable<NewsHeadline> SearchNews(int PageNo,string Keyword)
+        public async Task<APIResponse> SearchNews(int PageNo, string Keyword)
         {
-            NewsDetails obj = new NewsDetails();
-            return obj.SearchNews(PageNo,Keyword);
+            APIResponse objResponse = new APIResponse();
+            try
+            {
+                NewsDetails obj = new NewsDetails();
+                objResponse.Collection = obj.SearchNews(PageNo, Keyword);
+                objResponse.StatusCode = "200";
+                objResponse.StatusMessage = "API sucussfully processed";
+            }
+            catch (Exception ex)
+            {
+                objResponse.StatusMessage = ex.Message;
+                objResponse.StatusCode = "10501";
+            }
+            return objResponse;
         }
 
     }
 
-} 
+}

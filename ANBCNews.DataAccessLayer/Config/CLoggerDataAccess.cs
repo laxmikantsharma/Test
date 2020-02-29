@@ -34,7 +34,7 @@ namespace ANBCNews.DataAccessLayer.Config
                 objParameter.Add("p_Message", objDBLogger.Message);
                 objParameter.Add("p_Type", objDBLogger.Type);
                 objParameter.Add("p_Source", objDBLogger.Source);
-                 SqlData.dataContext.QuerySingle<Response>("USP_INSERT_EXCEPTIONLOG", objParameter, commandType: CommandType.StoredProcedure);
+                 SqlData.dataContext.QuerySingle<DBResponse>("USP_INSERT_EXCEPTIONLOG", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch
             {

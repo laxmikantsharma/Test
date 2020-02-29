@@ -11,7 +11,7 @@ import { ContactService } from '../../../../@core/services/contact.service';
 export class ContactComponent {
   public contactForm: FormGroup;
   ContactDetails: any = {};
-  DBResponce: any = {};
+  apiResponce: any = {};
 
   constructor(private contactService: ContactService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -31,8 +31,8 @@ export class ContactComponent {
     this.ContactDetails.Message = this.contactForm.value.Message;
 
     this.contactService.SaveComment(this.ContactDetails).subscribe(res => {
-      this.DBResponce = res;
-        if (this.DBResponce != null && this.DBResponce.responseResult) {
+        this.apiResponce = res;
+        if (this.apiResponce != null && this.apiResponce.statusCode=="200") {
             this.contactForm.reset();
         }
     });

@@ -11,6 +11,7 @@ import { AppConfig } from '../../../../@core/globals/app.config';
 export class NewsDetailComponent {
     newsDetail: any = {};
     newsId: any; 
+    apiResponse: any = {};
     constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router, private config: AppConfig) { }
     ngOnInit() {
         this.route.paramMap.subscribe(params => {
@@ -39,7 +40,9 @@ export class NewsDetailComponent {
     }
     private GetNewsDetail() {
         this.newsService.GetNewsDetail(this.newsId).subscribe(res => {
-            this.newsDetail = res != null ? res : {};
+            this.apiResponse = res; 
+            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+                this.newsDetail = this.apiResponse.object;
         });
     }
     ngOnDestroy() {

@@ -18,11 +18,15 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="dist\**" />
     <Compile Remove="src\assets\images\news\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="dist\**" />
     <Content Remove="src\assets\images\news\**" />
+    <EmbeddedResource Remove="dist\**" />
     <EmbeddedResource Remove="src\assets\images\news\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="dist\**" />
     <None Remove="src\assets\images\news\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>

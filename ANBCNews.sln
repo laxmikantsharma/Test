@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ANBCNews.BusinessLayer", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ANBCNews.DataAccessLayer", "ANBCNews.DataAccessLayer\ANBCNews.DataAccessLayer.csproj", "{9F6B387E-74EB-468F-AD54-82EE8900C24B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ANBCNews.Utility", "ANBCNews.Utility\ANBCNews.Utility.csproj", "{CBA73F2A-C188-4A3D-A2A0-E3E55FE5CBA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ANBCNews.Utility", "ANBCNews.Utility\ANBCNews.Utility.csproj", "{CBA73F2A-C188-4A3D-A2A0-E3E55FE5CBA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ANBCNews.Model", "ANBCNews.Model\ANBCNews.Model.csproj", "{52879FCA-28B8-4A80-83D8-F46B53C2FBAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ANBCNews.Model", "ANBCNews.Model\ANBCNews.Model.csproj", "{52879FCA-28B8-4A80-83D8-F46B53C2FBAC}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ANBCNews.Database", "ANBCNews.Database\ANBCNews.Database.sqlproj", "{C62B152C-7B5A-4960-A83C-19EBBE7B32BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ANBCNews.UI", "ANBCNews.UI\ANBCNews.UI.csproj", "{E7A0261F-01A0-4A35-8425-1CAAB36F5D86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ANBCNews.UI", "ANBCNews.UI\ANBCNews.UI.csproj", "{E7A0261F-01A0-4A35-8425-1CAAB36F5D86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ANBCNews.UI.Admin", "ANBCNews.UI.Admin\ANBCNews.UI.Admin.csproj", "{1F75B203-BB81-4C64-B5C8-DD388F960E9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{E7A0261F-01A0-4A35-8425-1CAAB36F5D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7A0261F-01A0-4A35-8425-1CAAB36F5D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7A0261F-01A0-4A35-8425-1CAAB36F5D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F75B203-BB81-4C64-B5C8-DD388F960E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F75B203-BB81-4C64-B5C8-DD388F960E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F75B203-BB81-4C64-B5C8-DD388F960E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F75B203-BB81-4C64-B5C8-DD388F960E9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,6 +16,7 @@ export class IndexComponent implements OnInit {
     onlyVideos: boolean=false
     newsTypeID: any =0
     pageTitle: any
+    apiResponse: any = {};
 
     constructor(private newsService: NewsService, private route: ActivatedRoute, private appConfig: AppConfig) { }
 
@@ -52,9 +53,12 @@ export class IndexComponent implements OnInit {
     private GetNewsByType() {
         if (this.reCall) {
             this.newsService.GetNewsByType(this.newsTypeID, this.onlyVideos, this.pageNo).subscribe(res => {
-                this.PostResponce = res != null ? res : [];
-                this.lstNews = this.lstNews.concat(this.PostResponce);
-                this.reCall = this.PostResponce.length > 9;
+                this.apiResponse = res;
+                if (this.apiResponse != null && this.apiResponse.statusCode == "200") {
+                this.PostResponce = this.apiResponse.collection;
+                    this.lstNews = this.lstNews.concat(this.PostResponce);
+                    this.reCall = this.PostResponce.length > 9;
+                }
             });
         }
     }

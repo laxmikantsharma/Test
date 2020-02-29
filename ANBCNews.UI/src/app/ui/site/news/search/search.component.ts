@@ -12,6 +12,7 @@ export class SearchComponent implements OnInit {
     strKeyword: string;
     lstsearchNews: any = [];
     config: any;
+    apiResponse: any = {};
 
     constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router, private appConfig: AppConfig) { }
 
@@ -44,7 +45,9 @@ export class SearchComponent implements OnInit {
     private SearchNews() {
         if (this.strKeyword != "") {
             this.newsService.SearchNews(this.config.currentPage, this.strKeyword).subscribe(res => {
-                this.lstsearchNews = res != null ? res : [];
+                this.apiResponse = res;
+                if ( this.apiResponse != null && this.apiResponse.statusCode == "200")
+                    this.lstsearchNews = this.apiResponse.collection; 
                 if (this.lstsearchNews.length > 0)
                     this.config.totalItems = this.lstsearchNews[0].totalRecored;
             });

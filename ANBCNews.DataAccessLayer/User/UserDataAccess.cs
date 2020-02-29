@@ -68,14 +68,14 @@ namespace ANBCNews.DataAccessLayer.User
             return null;
         }
 
-        public Response UpdateUserPassword(UserInfo objUserInfo)
+        public DBResponse UpdateUserPassword(UserInfo objUserInfo)
         {
             DynamicParameters objParameter = new DynamicParameters();
             try
             {
                 objParameter.Add("@p_Username", objUserInfo.Username);
                 objParameter.Add("@p_Password", objUserInfo.Password);
-                return SqlData.dataContext.QueryFirst<Response>("USERENTITY_SAVE_CAHNGEPASSWORD", objParameter, commandType: CommandType.StoredProcedure);
+                return SqlData.dataContext.QueryFirst<DBResponse>("USERENTITY_SAVE_CAHNGEPASSWORD", objParameter, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)
             {

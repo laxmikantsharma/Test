@@ -11,7 +11,7 @@ namespace ANBCNews.BusinessLayer.Master
     public class CommentDetails
     {
 
-        public Response SaveComment(CommentEntity objComment)
+        public DBResponse SaveComment(CommentEntity objComment)
         {
             CommentDataAccess objDataAccess = new CommentDataAccess();
             return objDataAccess.SaveComment(objComment);

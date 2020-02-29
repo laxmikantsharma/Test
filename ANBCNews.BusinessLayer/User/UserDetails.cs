@@ -54,7 +54,7 @@ namespace ANBCNews.BusinessLayer.User
             UserDataAccess objDataAccess = new UserDataAccess();
             return objDataAccess.GetToken(Token);
         }
-        public Response UpdateUserPassword(UserInfo objUserInfo)
+        public DBResponse UpdateUserPassword(UserInfo objUserInfo)
         {
             UserDataAccess objDataAccess = new UserDataAccess();
             return objDataAccess.UpdateUserPassword(objUserInfo);

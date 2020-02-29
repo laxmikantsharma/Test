@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
     lstBreakingNews: any = [];
     strKeyword: string
+    apiResponse: any = {};
     public serachForm: FormGroup;
     constructor(private newsService: NewsService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -20,7 +21,9 @@ export class HeaderComponent implements OnInit {
 
     private GetBreakingNews() {
         this.newsService.GetBreakingNews().subscribe(res => {
-            this.lstBreakingNews = res != null ? res : [];
+            this.apiResponse = res;
+            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+                this.lstBreakingNews = this.apiResponse.collection; 
         });
     }
 

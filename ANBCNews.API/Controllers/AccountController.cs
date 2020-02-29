@@ -35,7 +35,7 @@ namespace ANBCNews.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Post([FromForm]UserInfo credentials)
         {
-            Response objResponse = new Response();
+            DBResponse objResponse = new DBResponse();
             UserInfo obj = null;
             try
             {
@@ -65,7 +65,7 @@ namespace ANBCNews.API.Controllers
         [HttpPost("ForgotPassword")]
         public async Task<IActionResult> ForgotPassword([FromBody]string Username)
         {
-            Response objResponse = new Response();
+            DBResponse objResponse = new DBResponse();
             try
             {
                 if (!string.IsNullOrEmpty(Username))
@@ -103,7 +103,7 @@ namespace ANBCNews.API.Controllers
         [HttpGet("CheckTokenResetPassword/{recoveryToken}")]
         public async Task<IActionResult> CheckTokenResetPassword(string recoveryToken)
         {
-            Response objResponse = new Response();
+            DBResponse objResponse = new DBResponse();
             try
             { 
                 if (!string.IsNullOrEmpty(recoveryToken))
@@ -143,7 +143,7 @@ namespace ANBCNews.API.Controllers
         [HttpPost("ResetPassword/{recoveryToken}")]
         public async Task<IActionResult> ResetPassword([FromBody]ResetPassword objModel, string recoveryToken)
         {
-            Response objResponse = null;
+            DBResponse objResponse = null;
             UserDetails objUserDetails = new UserDetails();
             TokenBucket objTokenBucket = new TokenBucket(); 
             UserInfo objUserEntity = new UserInfo();
@@ -194,7 +194,7 @@ namespace ANBCNews.API.Controllers
         {
             UserDetails objUserDetails = new UserDetails();
             UserInfo objUserEntity = new UserInfo();
-             Response objResult = null;
+             DBResponse objResult = null;
             try
             {
                 if (ModelState.IsValid)

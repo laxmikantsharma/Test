@@ -7,6 +7,7 @@ import { NewsService } from '../../../../@core/services/news.service';
 })
 export class SliderComponent {
     lstSliderNews: any = [];
+    apiResponse: any = {};
     constructor(private newsService: NewsService) { }
 
     ngOnInit() {
@@ -15,7 +16,9 @@ export class SliderComponent {
 
     private GetBreakingNews() {
         this.newsService.GetSliderNews().subscribe(res => {
-            this.lstSliderNews = res != null ? res : [];
+            this.apiResponse = res;
+            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+                this.lstSliderNews = this.apiResponse.collection; 
         });
     }
 }

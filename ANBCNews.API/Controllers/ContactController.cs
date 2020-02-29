@@ -16,23 +16,32 @@ namespace ANBCNews.API.Controllers
     public class ContactController : Controller
     {
         [HttpPost()]
-        public ActionResult SaveContact([FromBody]ContactEntity objContact)
+        public async Task<APIResponse> SaveContact([FromBody]ContactEntity objContact)
         {
-            Response obj = new Response();
-            if (ModelState.IsValid)
+            APIResponse objResponse = new APIResponse();
+            try
             {
-                ContactDetails objContactDetails = new ContactDetails();
-                obj = objContactDetails.SaveContact(objContact);
-                obj.Result = obj.ID > 0;
-                obj.Message = obj.Result ? "Thanks for your query. We will contact you soon." : AppMessage.SystemError;
-
+                DBResponse obj = new DBResponse();
+                if (ModelState.IsValid)
+                {
+                    ContactDetails objContactDetails = new ContactDetails();
+                    obj = objContactDetails.SaveContact(objContact);
+                    obj.Result = obj.ID > 0;
+                    objResponse.StatusMessage = obj.Result ? "Thanks for your query. We will contact you soon." : AppMessage.SystemError;
+                    objResponse.StatusCode = obj.Result ? "200" : "501";
+                }
+                else
+                {
+                    objResponse.StatusCode = "502";
+                    objResponse.StatusMessage = "Please fill in all required fields";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                obj.Result = false;
-                obj.Message = "Please fill in all required fields";
+                objResponse.StatusMessage = ex.Message;
+                objResponse.StatusCode = "10501";
             }
-            return Ok(new { ResponseResult = obj.Result, Message = obj.Message });
+            return objResponse;
         }
     }
 }
