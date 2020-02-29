@@ -31,18 +31,18 @@ namespace ANBCNews.API.Controllers
                     obj = objCommentDetails.SaveComment(objComment);
                     obj.Result = obj.ID > 0;
                     objResponse.StatusMessage = obj.Result ? "Thanks for reply." : AppMessage.SystemError;
-                    objResponse.StatusCode = obj.Result ? "200" : "501";
+                    objResponse.StatusCode = obj.Result ? APIStatusCode.Success.ToString() : APIStatusCode.InternalError.ToString(); ;
                 }
                 else
                 {
-                    objResponse.StatusCode = "502";
+                    objResponse.StatusCode = APIStatusCode.ValidationFailed.ToString();
                     objResponse.StatusMessage = "Please fill in all required fields";
                 }
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return Ok(objResponse);
         }

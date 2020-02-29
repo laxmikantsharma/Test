@@ -16,4 +16,11 @@ namespace ANBCNews.Utility
         public const string MassageSend = "Message  send successfully.";
         public const string RecordNotDelete = "Record Not deleted.";
     }
+    public class APIStatusCode 
+    {
+        public const string SystemError = "10501";
+        public const string ValidationFailed = "10502";
+        public const string InternalError = "10503";
+        public const string Success = "10200";
+    }
 }

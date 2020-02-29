@@ -32,7 +32,7 @@ export class ContactComponent {
 
     this.contactService.SaveComment(this.ContactDetails).subscribe(res => {
         this.apiResponce = res;
-        if (this.apiResponce != null && this.apiResponce.statusCode=="200") {
+        if (this.apiResponce != null && this.apiResponce.statusCode=="10200") {
             this.contactForm.reset();
         }
     });

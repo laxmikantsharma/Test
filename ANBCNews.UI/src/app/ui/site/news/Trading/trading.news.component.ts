@@ -20,7 +20,7 @@ export class TradingNewsComponent implements OnInit {
     private GetTradingNews() {
         this.newsService.GetTradingNews().subscribe(res => {
             this.apiResponse = res;
-            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+            if (this.apiResponse != null && this.apiResponse.statusCode == "10200")
                 this.lstTradingNews = this.apiResponse.collection;   
         });
     }

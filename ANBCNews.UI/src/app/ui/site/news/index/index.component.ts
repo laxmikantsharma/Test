@@ -54,7 +54,7 @@ export class IndexComponent implements OnInit {
         if (this.reCall) {
             this.newsService.GetNewsByType(this.newsTypeID, this.onlyVideos, this.pageNo).subscribe(res => {
                 this.apiResponse = res;
-                if (this.apiResponse != null && this.apiResponse.statusCode == "200") {
+                if (this.apiResponse != null && this.apiResponse.statusCode == "10200") {
                 this.PostResponce = this.apiResponse.collection;
                     this.lstNews = this.lstNews.concat(this.PostResponce);
                     this.reCall = this.PostResponce.length > 9;

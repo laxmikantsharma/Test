@@ -28,18 +28,18 @@ namespace ANBCNews.API.Controllers
                     obj = objContactDetails.SaveContact(objContact);
                     obj.Result = obj.ID > 0;
                     objResponse.StatusMessage = obj.Result ? "Thanks for your query. We will contact you soon." : AppMessage.SystemError;
-                    objResponse.StatusCode = obj.Result ? "200" : "501";
+                    objResponse.StatusCode = obj.Result ? APIStatusCode.Success : APIStatusCode.InternalError;
                 }
                 else
                 {
-                    objResponse.StatusCode = "502";
+                    objResponse.StatusCode = APIStatusCode.ValidationFailed;
                     objResponse.StatusMessage = "Please fill in all required fields";
                 }
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return objResponse;
         }

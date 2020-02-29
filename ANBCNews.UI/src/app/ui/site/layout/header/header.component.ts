@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     private GetBreakingNews() {
         this.newsService.GetBreakingNews().subscribe(res => {
             this.apiResponse = res;
-            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+            if (this.apiResponse != null && this.apiResponse.statusCode == "10200")
                 this.lstBreakingNews = this.apiResponse.collection; 
         });
     }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using ANBCNews.Model;
+using ANBCNews.Utility;
 
 namespace ANBCNews.API.Controllers
 {
@@ -55,13 +56,13 @@ namespace ANBCNews.API.Controllers
             {
                 NewsDetails obj = new NewsDetails();
                 objResponse.Object = obj.GetNewsDetail(NewsID);
-                objResponse.StatusCode = "200";
+                objResponse.StatusCode =APIStatusCode.Success;;
                 objResponse.StatusMessage = "API sucussfully processed";
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return objResponse;
         }
@@ -75,13 +76,13 @@ namespace ANBCNews.API.Controllers
                 NewsDetails obj = new NewsDetails();
                 NewsParam objNewsParam = new NewsParam { SectionID = SectionID };
                 objResponse.Collection = obj.GetNewsHeadlines(objNewsParam);
-                objResponse.StatusCode = "200";
+                objResponse.StatusCode =APIStatusCode.Success;;
                 objResponse.StatusMessage = "API sucussfully processed";
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return objResponse;
         }
@@ -95,13 +96,13 @@ namespace ANBCNews.API.Controllers
                 NewsDetails obj = new NewsDetails();
                 NewsParam objNewsParam = new NewsParam { PageNo = PageNo };
                 objResponse.Collection = obj.GetNewsHeadlines(objNewsParam);
-                objResponse.StatusCode = "200";
+                objResponse.StatusCode =APIStatusCode.Success;;
                 objResponse.StatusMessage = "API sucussfully processed";
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return objResponse;
         }
@@ -114,13 +115,13 @@ namespace ANBCNews.API.Controllers
                 NewsDetails obj = new NewsDetails();
                 NewsParam objNewsParam = new NewsParam { PageNo = PageNo, OnlyVideo = OnlyVideo, NewsTypeID = NewsTypeID };
                 objResponse.Collection = obj.GetNewsHeadlines(objNewsParam);
-                objResponse.StatusCode = "200";
+                objResponse.StatusCode =APIStatusCode.Success;;
                 objResponse.StatusMessage = "API sucussfully processed";
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return objResponse;
         }
@@ -133,13 +134,13 @@ namespace ANBCNews.API.Controllers
             {
                 NewsDetails obj = new NewsDetails();
                 objResponse.Collection = obj.SearchNews(PageNo, Keyword);
-                objResponse.StatusCode = "200";
+                objResponse.StatusCode =APIStatusCode.Success;
                 objResponse.StatusMessage = "API sucussfully processed";
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return objResponse;
         }

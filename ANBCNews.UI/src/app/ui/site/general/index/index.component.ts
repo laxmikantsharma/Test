@@ -18,12 +18,12 @@ export class IndexComponent implements OnInit  {
     private GetNews() {
         this.newsService.GetLetestNews().subscribe(res => {
             this.apiResponse = res;
-            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+            if (this.apiResponse != null && this.apiResponse.statusCode == "10200")
                 this.lstLetestNews = this.apiResponse.collection;
         });
         this.newsService.GetTop20NewsForHome().subscribe(res => {
             this.apiResponse = res;
-            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+            if (this.apiResponse != null && this.apiResponse.statusCode == "10200")
                 this.lstTop20News = this.apiResponse.collection;  
         });
     }

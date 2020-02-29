@@ -17,7 +17,7 @@ export class SliderComponent {
     private GetBreakingNews() {
         this.newsService.GetSliderNews().subscribe(res => {
             this.apiResponse = res;
-            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+            if (this.apiResponse != null && this.apiResponse.statusCode == "10200")
                 this.lstSliderNews = this.apiResponse.collection; 
         });
     }

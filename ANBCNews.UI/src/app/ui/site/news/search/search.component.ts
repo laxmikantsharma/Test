@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
         if (this.strKeyword != "") {
             this.newsService.SearchNews(this.config.currentPage, this.strKeyword).subscribe(res => {
                 this.apiResponse = res;
-                if ( this.apiResponse != null && this.apiResponse.statusCode == "200")
+                if ( this.apiResponse != null && this.apiResponse.statusCode == "10200")
                     this.lstsearchNews = this.apiResponse.collection; 
                 if (this.lstsearchNews.length > 0)
                     this.config.totalItems = this.lstsearchNews[0].totalRecored;

@@ -41,7 +41,7 @@ export class NewsDetailComponent {
     private GetNewsDetail() {
         this.newsService.GetNewsDetail(this.newsId).subscribe(res => {
             this.apiResponse = res; 
-            if (this.apiResponse != null && this.apiResponse.statusCode == "200")
+            if (this.apiResponse != null && this.apiResponse.statusCode == "10200")
                 this.newsDetail = this.apiResponse.object;
         });
     }

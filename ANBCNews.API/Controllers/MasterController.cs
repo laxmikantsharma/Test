@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ANBCNews.BusinessLayer.Master;
 using ANBCNews.Model;
 using ANBCNews.Model.Master;
+using ANBCNews.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -23,13 +24,13 @@ namespace ANBCNews.API.Controllers
             {
                 MasterDetails obj = new MasterDetails();
                 objResponse.Collection = obj.GetImageType();
-                objResponse.StatusCode = "200";
+                objResponse.StatusCode = APIStatusCode.Success;
                 objResponse.StatusMessage = "API sucussfully processed";
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.SystemError;
             }
             return objResponse;
         }
@@ -41,13 +42,13 @@ namespace ANBCNews.API.Controllers
             {
                 MasterDetails obj = new MasterDetails();
                 objResponse.Collection = obj.GetNewsType();
-                objResponse.StatusCode = "200";
+                objResponse.StatusCode =APIStatusCode.Success;;
                 objResponse.StatusMessage = "API sucussfully processed";
             }
             catch (Exception ex)
             {
                 objResponse.StatusMessage = ex.Message;
-                objResponse.StatusCode = "10501";
+                objResponse.StatusCode = APIStatusCode.Success;
             }
             return objResponse;
         }
