@@ -1,0 +1,341 @@
+		
+------------------------------------------------------------------------------------
+	
+appModule.config(function ($routeProvider) {
+/*
+when "/" -> redirect to  "app/mailBox/mailBox.html" with "inbox" as boxValue
+when "/mailBox/:boxValue" -> route to  "app/mailBox/mailBox.html"
+when "/mailBox/:boxValue/mailBoxInfo/:mailId" -> route to  "app/mailBoxInfo/mailBoxInfo.html"
+when "/mailEditor/:mailId" -> route to  "app/mailEditor/mailEditor.html"
+
+*/
+$routeProvider.when('/', {
+                templateUrl: 'app/mailBox/mailBox.html',
+            }).when('/mailBox/:boxValue', {
+                templateUrl: 'app/mailBox/mailBox.html',
+            }).when('/mailBox/:boxValue/mailBoxInfo/:mailId', {
+                templateUrl: 'app/mailBoxInfo/mailBoxInfo.html',
+            }).when('/mailEditor/:mailId', {
+                templateUrl: 'app/mailEditor/mailEditor.html',
+            }).otherwise({
+                redirectTo: "/"
+            });
+			
+
+});
+
+---------------------------------factory---------------------------------------------------
+appModule.factory('mailFactory', function ($http) {
+    /* 
+       ******** URL *********
+       --> "api/getInbox" to get Inbox
+           -> use POST method
+   
+       --> "api/getDraftMsg" to get Draft Email
+           -> use POST method
+   
+       --> "api/getSentMsg" to get Sent Email
+           -> use POST method
+   
+       --> "api/getMailInfo" to get Email details
+           -> use POST method
+       
+       --> "api/sendMail" to send Email
+           -> use POST method
+
+       --> "api/deleteEmail" to delete Email
+           -> use POST method
+
+       --> "api/saveDraft" to save as draft
+           -> use POST method     
+        */
+    var mailFactory = {};
+
+    mailFactory.authKey = "s1426478";
+
+ mailFactory.getInbox = function () {
+        //POST: return HttpPromise
+        // code here
+		var request={"authKey":"s1426478","type":"inbox"}
+		return $http.post('api/getInbox',request);
+    };
+
+ mailFactory.getDraftMsg = function () {
+        //POST: return HttpPromise
+        // code here
+		var request={"authKey":"s1426478","type":"draft"}
+		return $http.post('api/getDraftMsg',request);
+    }; 
+
+    mailFactory.getSentMsg = function () {
+         //POST: return HttpPromise
+        // code here
+		var request={"authKey":"s1426478","type":"sent"}
+		return $http.post('api/getSentMsg',request);
+    };
+
+    mailFactory.getMailInfo = function (msgId) {
+        //POST: return HttpPromise
+        // code here 
+		var request={"authKey":"s1426478","_id":msgId}
+		return $http.post('api/getMailInfo',request);
+    }; 
+
+
+    mailFactory.sendMail = function (obj) {
+        //POST: return HttpPromise
+        // code here
+		//{"header":{"from":"newaccount@webnxg.com","date":"4/11/2020","to":"sample@webnxg.com","cc":"","bcc":"","subject":"sample demo"},"messageBody":"cccc"}
+       var request={"authKey":"s1426478","message":obj}
+		   return $http.post('api/sendMail',request);
+    };
+
+    mailFactory.deleteEmail = function (msgId) {
+        //POST: return HttpPromise
+        // code here
+        var request={"authKey":"s1426478","_id":msgId}
+		return $http.post('api/deleteEmail',request);
+    }
+
+    mailFactory.saveDraft = function (obj) {
+        //POST: return HttpPromise
+        // code here		
+       var request={"authKey":"s1426478","message":obj}
+		return $http.post('api/saveDraft',request);
+    };
+    return mailFactory;
+});
+
+---------------------------------------mailBoxController---------------------------------------------
+
+appModule.controller("mailBoxController", function ($scope, $location, mailFactory, $routeParams) {
+    /*
+     get url parameter boxValue
+     boxValue holds mail type
+    */
+    $scope.mailType;
+    // mailBox
+    $scope.mailBox = null;
+
+    /**
+     * Based on mailType assign title to $scope.titleType
+     *  
+     * Mail Type   ->   Title 
+     *  "inbox"    ->   "Inbox"
+     *  "draft"    ->   "Draft"   
+     *   sent"     ->   "Sent Mail"   
+     * 
+     **/
+
+    
+
+
+
+    $scope.readMailList = function () {
+      if($routeParams.boxValue=="draft")
+      {
+        $scope.titleType = "Draft";
+        $scope.mailType="draft"
+         mailFactory.getDraftMsg().then(function (response) {
+                $scope.mailBox = response.data;
+            });
+      }else if($routeParams.boxValue=="sent")
+      {
+        $scope.titleType = "Sent Mail";
+        $scope.mailType="sent"
+         mailFactory.getSentMsg().then(function (response) {
+                $scope.mailBox = response.data;
+            });
+      }else{       
+        $scope.titleType = "Inbox";
+        $scope.mailType="inbox"
+        
+         mailFactory.getInbox().then(function (response) {
+                $scope.mailBox = response.data;
+            });
+      }
+        /**
+         * Based on mailType use the factory method to get the email list
+         * Assign the response data to $scope.mailBox
+         **/ 
+    }
+
+    $scope.deleteMessage = function (mailId) {
+        /**
+         * delete Email
+         * And call the readMailList function
+         * */
+         mailFactory.deleteEmail(mailId).then(function (response) {
+             $scope.readMailList();
+            });
+    }
+
+    $scope.showEmail = function (mailId) {
+        /**  
+         *  if mailType is inbox or sent then route to mailBoxInfo.html
+         *  if mailType is draft then route to mailEditor.html
+         **/
+          if($scope.mailType=="draft")
+          {
+              $location.path('mailEditor/'+mailId);
+          }else{
+              $location.path('mailBox/'+$scope.mailType+'/mailBoxInfo/'+mailId);
+          }
+    }
+
+    $scope.readMailList();
+});
+
+---------------------------------------mailBoxInfoController---------------------------------------------
+
+
+appModule.controller("mailBoxInfoController", function ($scope, $location,$window, mailFactory, $routeParams) {
+    /*
+     get url parameter boxValue and mailId
+     boxValue holds mail type
+    */
+    $scope.mailType;
+    $scope.mailId ;
+
+    $scope.goBack = function () {
+        // navigate back.
+          $window.history.back();
+    }
+    $scope.mailInfoObj = { };
+
+    $scope.getMailInfo = function () {
+      $scope.mailType=$routeParams.boxValue;
+      $scope.mailId=$routeParams.mailId;
+        /**
+         *  -> get the mail details and assign it to $scope.mailInfoObj
+         *  -> if mailType is "inbox" then $scope.mailInfoObj should contain from, date, cc, 
+         * bcc, subject and messageBody properties 
+         * eg:{ from:"", date: "",cc: "",bcc: "",subject: "", messageBody: ""}
+         *  -> if mailType is "sent" then $scope.mailInfoObj should contain to, date, cc, 
+         * bcc, subject and messageBody properties
+         * eg:{ to:"", date: "",cc: "",bcc: "",subject: "", messageBody: ""}
+         */
+ mailFactory.getMailInfo($scope.mailId).then(function (response) {
+                  if($scope.mailType=='inbox')
+                  {                    
+                $scope.mailInfoObj.from = response.data.header.from; 
+                  }else{                    
+                $scope.mailInfoObj.to = response.data.header.to; 
+                  }
+                $scope.mailInfoObj.date = response.data.header.date; 
+                $scope.mailInfoObj.cc = response.data.header.cc; 
+                $scope.mailInfoObj.bcc = response.data.header.bcc; 
+                $scope.mailInfoObj.subject = response.data.header.subject; 
+                $scope.mailInfoObj.messageBody = response.data.messageBody; 
+
+
+            });
+    }
+
+    $scope.getMailInfo();
+
+    $scope.deleteMessage = function () {
+        // delete the Email and navigate back.
+         
+        mailFactory.deleteEmail($scope.mailId).then(function (response) {
+            $scope.goBack();
+            });
+    }
+});
+---------------------------------------mailEditorController---------------------------------------------
+
+
+appModule.controller("mailEditorController", function ($scope, $location, $window, mailFactory, $routeParams) {
+    /*
+        get url parameter mailId
+        If mailId is -1 then it is new mail otherwise draft
+    */
+   var request={header:{},messageBody:""}
+    $scope.mailId;
+    $scope.formDataObj = {};
+
+    $scope.getMailInfo = function () {
+        /**
+         *  get the Email information if mailId not equal to -1
+         *  assign the response data to  $scope.formDataObj
+         *  $scope.formDataObj should contain to, cc, bcc, subject and  messageBody properties
+         *  eg:{ to:"", date: "",cc: "",bcc: "",subject: "", messageBody: ""}
+         */
+$scope.mailId=$routeParams.mailId;
+
+if($scope.mailId!=-1)
+{
+  mailFactory.getMailInfo($scope.mailId).then(function (response) { 
+                $scope.formDataObj.to = response.data.header.to; 
+                $scope.formDataObj.cc = response.data.header.cc; 
+                $scope.formDataObj.bcc = response.data.header.bcc; 
+                $scope.formDataObj.subject = response.data.header.subject; 
+                $scope.formDataObj.messageBody = response.data.messageBody; 
+            });
+}
+
+    }
+
+    $scope.getMailInfo();
+
+
+    $scope.goBack = function () {
+        // navigate back
+          $window.history.back();
+    }
+
+    $scope.getCurrentDate = function () {
+        // return today's date in DD/MM/YYYY format
+        // eg: 21/05/2020
+        return "DD/MM/YYYY";
+    }
+
+
+    $scope.send = function () {
+        // to send Email and navigate back
+        request.header.from="newaccount@webnxg.com";
+        request.header.date="22/02/2019";
+        request.header.to=$scope.formDataObj.to;
+        request.header.cc=$scope.formDataObj.cc;
+        request.header.bcc=$scope.formDataObj.bcc;
+        request.header.subject=$scope.formDataObj.subject;
+        request.messageBody=$scope.formDataObj.messageBody;
+        if($scope.mailId!=-1)
+        {
+             request._id=$scope.mailId;
+        }
+        mailFactory.sendMail(request).then(function (response) {
+                 $scope.goBack();
+            });
+
+    };
+    $scope.saveDraft = function () {
+        // to save as draft and navigate back
+        // If user is opening existing draft then add the propery name "_id" 
+        // and assign mailId to it 
+        request.header.from="newaccount@webnxg.com";
+        request.header.date="22/02/2019";
+        request.header.to=$scope.formDataObj.to;
+        request.header.cc=$scope.formDataObj.cc;
+        request.header.bcc=$scope.formDataObj.bcc;
+        request.header.subject=$scope.formDataObj.subject;
+        request.messageBody=$scope.formDataObj.messageBody; 
+        if($scope.mailId!=-1)
+        {
+             request._id=$scope.mailId;
+        }
+
+        mailFactory.saveDraft(request).then(function (response) {
+                 $scope.goBack();
+            });
+    }
+
+
+    $scope.deleteMessage = function () {
+        // to delete Email and naviagte back
+ mailFactory.deleteEmail($scope.mailId).then(function (response) {
+             $scope.goBack();
+            });
+    }
+
+}); 
