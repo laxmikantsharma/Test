@@ -1,0 +1,318 @@
+-------------------------------------------Create Your first angular application "Pick2get"-------------------------------------------
+
+var app = angular.module("demoApp", ["ngRoute"]);
+app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider) {
+  $routeProvider
+  .when("/checkout", {redirectTo: '/home'})
+  .when("/home", {
+    templateUrl : "homepage.html",
+    controller : "homepageCtrl"
+  })
+  .when("/electronics", {
+    templateUrl : "electronics.html",
+    controller : "electronicsCtrl"
+  })
+  .when("/books", {
+    templateUrl : "books.html",
+    controller : "booksCtrl"
+  })
+  .when("/wishlist", {
+    templateUrl : "wishlist.html",
+    controller : "wishlistCtrl"
+  }).otherwise({redirectTo: '/home'});;
+   $locationProvider.html5Mode(true);
+}]);
+
+app.controller("homepageCtrl", function ($scope) {
+  $scope.title = "Welcome to Pick2get";
+ $scope.body="Pick2get is a leading provider of technology products, services and solutions. The company offers expert service to the consumers, small business owners and educators who visit our stores or purchase online.";
+});
+app.controller("electronicsCtrl", function ($scope) {
+  $scope.title = "Electronic Categories";
+  $scope.categories=[];
+  $scope.categories.push("Mobile Phones");
+  $scope.categories.push("Tablets");
+  $scope.categories.push("TV");
+  $scope.categories.push("Camera");
+});
+app.controller("booksCtrl", function ($scope) {
+ $scope.title = "Book Categories";
+  $scope.categories=[];
+  $scope.categories.push("Philosophy and psychology");
+  $scope.categories.push("Religion");
+  $scope.categories.push("Technology and applied science");
+  $scope.categories.push("Arts and recreation");
+});
+app.controller("wishlistCtrl", function ($scope) {
+ $scope.title = "My Wishlist";
+  $scope.list=[];
+  $scope.list.push("Mobiles I wish");
+  $scope.list.push("Cameras I like");
+});
+
+// Define routes with corresponding html and controller
+// Note: should redirect to home page if we click undefined routes
+
+// remove # in url by using $locationProvider
+
+
+
+//Define below Controllers with required data
+//Note: Data has case sensitive and dont add any space unnecessarily
+
+//1. homepageCtrl
+//Welcome to Pick2get
+//Pick2get is a leading provider of technology products, services and solutions. The company offers expert service to the consumers, small business owners and educators who visit our stores or purchase online.
+
+
+//2. electronicsCtrl
+//Electronic Categories
+//Mobile Phones,Tablets,TV,Camera
+
+//3. booksCtrl
+//Book Categories
+//Philosophy and psychology,Religion,Technology and applied science,Arts and recreation
+
+//4. wishlistCtrl
+//My Wishlist
+//Mobiles I wish,Cameras I like
+
+
+
+
+--------------------------------------------------------------------Create your 'Pick2get' application using UI Router-----------------------------------------------------------------------------
+
+
+
+
+
+
+// declares application module with name "myApp"
+// inject ui.router dependency
+var app = angular.module('demoApp', [ "ui.router" ]);
+
+// define route configurations inside app.config
+// injecting dependencies
+app.config(function($stateProvider, $locationProvider,
+                                $urlRouterProvider) {
+
+    // creating routes or states
+    $stateProvider
+        .state('home', {
+            url : '/home',
+            templateUrl : "homepage.html",
+            controller : "homepageCtrl"
+        })
+        .state('electronics', {
+            url : '/electronics',
+            templateUrl : "electronics.html",
+            controller : "electronicsCtrl"
+        })
+        .state('books', {
+            url : '/books',
+            templateUrl : "books.html",
+            controller : "booksCtrl"
+        })
+        .state('wishlist', {
+            url : '/wishlist',
+            templateUrl : "wishlist.html",
+            controller : "wishlistCtrl"
+        });
+
+    // Redirect to home page if url does not
+    // matches any of the three mentioned above
+    $urlRouterProvider.otherwise("/home");
+     $locationProvider.html5Mode(true);
+});
+
+app.controller("homepageCtrl", function ($scope) {
+  $scope.title = "Welcome to Pick2get";
+ $scope.body="Pick2get is a leading provider of technology products, services and solutions. The company offers expert service to the consumers, small business owners and educators who visit our stores or purchase online.";
+});
+app.controller("electronicsCtrl", function ($scope) {
+  $scope.title = "Electronic Categories";
+  $scope.categories=[];
+  $scope.categories.push("Mobile Phones");
+  $scope.categories.push("Tablets");
+  $scope.categories.push("TV");
+  $scope.categories.push("Camera");
+});
+app.controller("booksCtrl", function ($scope) {
+ $scope.title = "Book Categories";
+  $scope.categories=[];
+  $scope.categories.push("Philosophy and psychology");
+  $scope.categories.push("Religion");
+  $scope.categories.push("Technology and applied science");
+  $scope.categories.push("Arts and recreation");
+});
+app.controller("wishlistCtrl", function ($scope) {
+ $scope.title = "My Wishlist";
+  $scope.list=[];
+  $scope.list.push("Mobiles I wish");
+  $scope.list.push("Cameras I like");
+});
+
+
+
+-------------------------------------------------------------------Write a Program to show the usage of Custom Directive----------------------------------------------------------------
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    var imgPath = "img/";
+	$scope.dtsinCart=0;
+	$scope.showProduct=false;
+    $scope.products = [
+		{
+			name : "Happy Cycle",
+			discount:"20%",
+			price: "2500",
+			brand : "Wheels",
+			addedToCart:false,
+			image : imgPath + "cycle.jpg",
+			quantity:0
+		},
+		{
+			name : "Kids Shoes",
+			discount:"10%",
+			price: "1460",
+			brand : "Feel Good",
+			addedToCart:false,
+			image : imgPath + "shoes.jpg",
+			quantity:0
+		},
+		{
+			name : "Polo Baby Care Dress",
+			discount:"20%",
+			price: "2500",
+			brand : "Super Hero",
+			addedToCart:false,
+			image : imgPath + "shirt.jpg",
+			quantity:0
+		},
+	];
+});
+app.directive("navBar", function() {
+  return {
+    templateUrl : "navBar.html"
+  };
+});
+app.directive("home", function() {
+  return {
+    templateUrl  : "home.html"
+  };
+});
+app.directive("footerBar", function() {
+  return {
+    template : "Pick2get is a wonderful place to buy things for your home!"
+  };
+});
+
+// Add your Custome Directives here
+
+// home directive should add home.html
+// nav-Bar directive should add navBar.html
+// footer-Bar directive should add the text "Pick2get is a wonderful place to buy things for your home!" in index.html
+
+
+
+ ---------------------------------------------------------------Modify Pick2get application with UI-Router(Nested view)-------------------------------------------------------------------
+ 
+ 
+// declares application module with name "myApp"
+// inject ui.router dependency
+var app = angular.module('demoApp', [ "ui.router" ]);
+
+// define route configurations inside app.config
+// injecting dependencies
+app.config(function($stateProvider, $locationProvider,
+                                $urlRouterProvider) {
+
+    // creating routes or states
+    $stateProvider
+         .state('home', {
+            url : '/home',
+             views: {
+            'container-view': {
+                    templateUrl : "homepage.html",
+                    controller : "homepageCtrl"
+                }
+              }
+        })
+		 .state('electronics', {
+            url : '/electronics',
+             views: {
+            'container-view': {
+                    templateUrl : "electronics.html",
+                    controller : "electronicsCtrl"
+                }
+              }
+        })
+		.state('books', {
+            url : '/books',
+             views: {
+            'container-view': {
+                    templateUrl : "books.html",
+                    controller : "booksCtrl"
+                }
+              }
+        })
+		.state('wishlist', {
+            url : '/wishlist',
+             views: {
+            'container-view': {
+                    templateUrl : "wishlist.html",
+                    controller : "wishlistCtrl"
+                }
+              }
+        })
+		.state('wishlist.cameras', {
+            url : '/cameras',
+             views: {
+            'camera-view': {
+                    templateUrl : "wishlist.cameras.html",
+                    controller : "wishlistCtrl"
+                }
+              }
+        })
+		.state('wishlist.mobiles', {
+            url : '/mobiles',
+             views: {
+            'mobile-view': {
+                    templateUrl : "wishlist.mobiles.html",
+                    controller : "wishlistCtrl"
+                }
+              }
+        }) ;
+
+    // Redirect to home page if url does not
+    // matches any of the three mentioned above
+    $urlRouterProvider.otherwise("/home");
+     $locationProvider.html5Mode(true);
+});
+
+app.controller("homepageCtrl", function ($scope) {
+  $scope.title = "Welcome to Pick2get";
+ $scope.body="Pick2get is a leading provider of technology products, services and solutions. The company offers expert service to the consumers, small business owners and educators who visit our stores or purchase online.";
+});
+app.controller("electronicsCtrl", function ($scope) {
+  $scope.title = "Electronic Categories";
+  $scope.categories=[];
+  $scope.categories.push("Mobile Phones");
+  $scope.categories.push("Tablets");
+  $scope.categories.push("TV");
+  $scope.categories.push("Camera");
+});
+app.controller("booksCtrl", function ($scope) {
+ $scope.title = "Book Categories";
+  $scope.categories=[];
+  $scope.categories.push("Philosophy and psychology");
+  $scope.categories.push("Religion");
+  $scope.categories.push("Technology and applied science");
+  $scope.categories.push("Arts and recreation");
+});
+app.controller("wishlistCtrl", function ($scope) {
+ $scope.title = "My Wishlist";
+  $scope.list=[];
+  $scope.list.push("Mobiles I wish");
+  $scope.list.push("Cameras I like");
+});
